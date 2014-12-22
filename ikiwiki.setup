@@ -64,6 +64,7 @@ add_plugins:
 - theme
 - sidebar
 - comments
+- gitpush
 # plugins to disable
 disable_plugins: []
 # additional directory to search for template files
@@ -109,8 +110,7 @@ hardlink: 1
 # extra library and plugin directory
 libdir: /home/b-etckeeper/.ikiwiki
 # environment variables
-ENV:
-  TMPDIR: /home/b-etckeeper/tmp
+#ENV: ''
 # time zone name
 timezone: GMT
 # regexp of normally excluded files to include
@@ -164,7 +164,8 @@ gitmaster_branch: master
 
 # gitpush plugin
 # git repository urls that changes are pushed to
-#git_push_to: []
+git_push_to:
+- ssh://joey@git.kitenet.net/srv/git/etckeeper
 
 # htmlscrubber plugin
 # PageSpec specifying pages not to scrub
@@ -271,9 +272,9 @@ langdefdir: /usr/share/highlight/langDefs
 #- es|Español
 #- de|Deutsch
 # PageSpec controlling which pages are translatable
-#po_translatable_pages: '* and !*/Discussion'
+po_translatable_pages: ''
 # internal linking behavior (default/current/negotiated)
-#po_link_to: current
+po_link_to: default
 
 ######################################################################
 # special-purpose plugins
@@ -306,8 +307,8 @@ langdefdir: /usr/share/highlight/langDefs
 
 ######################################################################
 # web plugins
-#   (404, attachment, comments, editdiff, edittemplate, getsource, google,
-#    goto, mirrorlist, remove, rename, repolist, search, theme, userlist,
+#   (404, attachment, comments, editdiff, edittemplate, google, goto,
+#    mirrorlist, remove, rename, repolist, search, theme, userlist,
 #    websetup, wmd)
 ######################################################################
 
@@ -321,21 +322,17 @@ virus_checker: clamdscan -
 # PageSpec of pages where comments are allowed
 comments_pagespec: todo/*
 # PageSpec of pages where posting new comments is not allowed
-#comments_closed_pagespec: blog/controversial or blog/flamewar
+comments_closed_pagespec: ''
 # Base name for comments, e.g. "comment_" for pages like "sandbox/comment_12"
-#comments_pagename: ''
+comments_pagename: comment_
 # Interpret directives in comments?
 #comments_allowdirectives: 0
 # Allow anonymous commenters to set an author name?
 #comments_allowauthor: 0
 # commit comments to the VCS
-#comments_commit: 1
+comments_commit: 1
 # Restrict formats for comments to (no restriction if empty)
-#comments_allowformats: mdwn txt
-
-# getsource plugin
-# Mime type for returned source.
-#getsource_mimetype: text/plain; charset=utf-8
+comments_allowformats: ''
 
 # mirrorlist plugin
 # list of mirrors
@@ -353,7 +350,7 @@ repositories:
 # path to the omega cgi program
 omega_cgi: /usr/lib/cgi-bin/omega/omega
 # use google site search rather than internal xapian index?
-google_search: 1
+google_search: 0
 
 # theme plugin
 # name of theme to enable
@@ -432,13 +429,13 @@ directive_description_dir: ikiwiki/directive
 
 # aggregate plugin
 # enable aggregation to internal pages?
-#aggregateinternal: 1
+aggregateinternal: 1
 # allow aggregation to be triggered via the web?
 #aggregate_webtrigger: 0
 
 # autoindex plugin
 # commit autocreated index pages
-#autoindex_commit: 1
+autoindex_commit: 1
 
 # camelcase plugin
 # list of words to not turn into links
@@ -458,7 +455,7 @@ directive_description_dir: ikiwiki/directive
 
 # prettydate plugin
 # format to use to display date
-#prettydateformat: '%X, %B %o, %Y'
+prettydateformat: '%X, %B %o, %Y'
 
 # recentchanges plugin
 # name of the recentchanges page
