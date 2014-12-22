@@ -62,6 +62,7 @@ add_plugins:
 - testpagespec
 - version
 - theme
+- sidebar
 # plugins to disable
 disable_plugins: []
 # additional directory to search for template files
