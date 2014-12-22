@@ -17,7 +17,7 @@ adminuser:
 # users who are banned from the wiki
 banned_users: []
 # where the source of the wiki is located
-srcdir: /home/b-etckeeper/source
+srcdir: /home/b-etckeeper/source/doc
 # where to build the wiki
 destdir: /home/b-etckeeper/public_html
 # base url to the wiki
@@ -152,9 +152,9 @@ git_test_receive_wrapper: /home/b-etckeeper/source.git/hooks/pre-receive
 untrusted_committers:
 - ikiwiki-anon
 # gitweb url to show file history ([[file]] substituted)
-historyurl: http://source.etckeeper.branchable.com/?p=source.git;a=history;f=[[file]];hb=HEAD
+historyurl: http://source.etckeeper.branchable.com/?p=source.git;a=history;f=doc/[[file]];hb=HEAD
 # gitweb url to show a diff ([[file]], [[sha1_to]], [[sha1_from]], [[sha1_commit]], and [[sha1_parent]] substituted)
-diffurl: http://source.etckeeper.branchable.com/?p=source.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]
+diffurl: http://source.etckeeper.branchable.com/?p=source.git;a=blobdiff;f=doc/[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]
 # where to pull and push changes (set to empty string to disable)
 gitorigin_branch: origin
 # branch that the wiki is stored in
