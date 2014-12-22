@@ -63,6 +63,7 @@ add_plugins:
 - version
 - theme
 - sidebar
+- comments
 # plugins to disable
 disable_plugins: []
 # additional directory to search for template files
@@ -80,7 +81,7 @@ prefix_directives: 1
 # use page/index.mdwn source files
 indexpages: 0
 # enable Discussion pages?
-discussion: 1
+discussion: 0
 # name of Discussion pages
 discussionpage: Discussion
 # generate HTML5?
@@ -318,7 +319,7 @@ virus_checker: clamdscan -
 
 # comments plugin
 # PageSpec of pages where comments are allowed
-#comments_pagespec: blog/* and !*/Discussion
+comments_pagespec: todo/*
 # PageSpec of pages where posting new comments is not allowed
 #comments_closed_pagespec: blog/controversial or blog/flamewar
 # Base name for comments, e.g. "comment_" for pages like "sandbox/comment_12"
