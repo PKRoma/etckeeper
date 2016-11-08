@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="lukeshu"
+ avatar="http://cdn.libravatar.org/avatar/002a91d6bdfd6cfecde043c0a7f39123"
+ subject="comment 1"
+ date="2016-11-08T14:40:31Z"
+ content="""
+Relatedly, `etckeeper unclean` won't show metadata changes, which means that things like `/etc/etckeeper/daily` won't end up making a commit.
+"""]]
