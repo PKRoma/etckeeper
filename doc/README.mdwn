@@ -163,7 +163,7 @@ transport like ssh, and only to a server you trust.)
 	git remote add backup ssh://server/etc-clone
 	git push backup --all
 
-If you have several machine's using etckeeper, you can start with a
+If you have several machines using etckeeper, you can start with a
 etckeeper repository on one machine, then add another machine's etckeeper
 repository as a git remote. Then you can diff against it, examine its
 history, merge with it, and so on. It would probably not, however, be wise
