@@ -1,3 +1,5 @@
 fixed typo in README
 
 https://github.com/Yky/etckeeper/commit/5f2556abbc404eb0d06b31f620fe655c8802d8e7
+
+> applied [[done]] --[[Joey]]
