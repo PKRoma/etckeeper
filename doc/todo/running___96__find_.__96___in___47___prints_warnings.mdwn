@@ -2,11 +2,11 @@ I am trying to make etckeeper track `/etc` and another folder in `/`.
 
 However the script 20-warn-problem-files reports many errors like
 
-  find: `./proc/7010/task/7010/fd/5': No such file or directory
-  find: `./proc/7010/task/7010/fd/5': No such file or directory
-  find: `./proc/7010/task/7010/fd/5': No such file or directory
-  find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
-  find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
-  find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
 
 Due to files in `/proc` being created and deleted while `find` is running.
