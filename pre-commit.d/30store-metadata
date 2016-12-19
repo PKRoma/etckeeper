@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+# Make sure sort always sorts in same order.
+LANG=C
+export LANG
+
 filter_ignore() {
 	case "$VCS" in
 		darcs) ignorefile=.darcsignore ;;

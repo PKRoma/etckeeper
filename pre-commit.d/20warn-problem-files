@@ -2,7 +2,7 @@
 set -e
 
 exclude_internal () {
-	egrep -v '(^|/)(.git|.hg|.bzr|_darcs)/'
+	egrep -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
 }
 
 if [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
