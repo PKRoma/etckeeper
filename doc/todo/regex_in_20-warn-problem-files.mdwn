@@ -4,7 +4,7 @@
 
 should probably escape the `.`s. 
 
-exclude_internal () {
-        egrep -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
-}
+    exclude_internal () {
+            egrep -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
+    }
 
