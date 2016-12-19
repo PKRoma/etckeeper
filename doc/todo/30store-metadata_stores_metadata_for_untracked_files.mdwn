@@ -1,0 +1,3 @@
+I am trying to use etckeeper to track `/`  (We need to track /etc and also /unionfs/overlay/etc, which is an etc that gets loaded onto a second computer).
+
+`git ls-files` lists only the files we want to track, and `.gitignore` correctly excludes all the files we don't want to match (such as `./home`, `./proc`, ), yet somehow `.etckeeper` contains metadata for a bunch of files that I don't want etckeeper to touch.
