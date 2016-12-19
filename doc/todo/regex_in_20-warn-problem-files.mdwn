@@ -1,0 +1,10 @@
+    exclude_internal () {
+            egrep -v '(^|/)(.git|.hg|.bzr|_darcs)/'
+    }
+
+should probably escape the `.`s. 
+
+exclude_internal () {
+        egrep -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
+}
+
