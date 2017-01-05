@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="https://openid.stackexchange.com/user/9df74bc5-3799-4cb1-8f54-971c8423ddaa"
+ nickname="alan.christopher.jenkins"
+ avatar="http://cdn.libravatar.org/avatar/8e723c6cf403714781c6f1ca93551ac5f15f1c982669ab553fb2b73bb896a69a"
+ subject="comment 1"
+ date="2017-01-05T12:39:02Z"
+ content="""
+What happened to me was that .etckeeper bloats up with files from the .git directories.  Also it behaved confusingly different depending on the exact sequence of events.  https://unix.stackexchange.com/questions/323489/i-have-nested-git-repos-will-it-cause-a-problem
+"""]]
