@@ -1,0 +1,13 @@
+[[!comment format=mdwn
+ username="https://openid.stackexchange.com/user/9df74bc5-3799-4cb1-8f54-971c8423ddaa"
+ nickname="alan.christopher.jenkins"
+ avatar="http://cdn.libravatar.org/avatar/8e723c6cf403714781c6f1ca93551ac5f15f1c982669ab553fb2b73bb896a69a"
+ subject="comment 2"
+ date="2017-01-21T11:50:59Z"
+ content="""
+Huh, I was 100% wrong.  [[done]].  Some user error, I can't work out what though.
+
+I'm fairly sure this was when I masked fwupd.service.  That was on Fedora 25 Workstation, my current laptop.
+
+I can successfully use `git log` on either /etc/systemd/system or `-- /etc/systemd/system/fwupd.service`, and I see the service being masked and later unmasked.
+"""]]
