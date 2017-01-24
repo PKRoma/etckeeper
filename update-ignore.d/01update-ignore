@@ -99,6 +99,10 @@ writefile () {
 		ignore "*.pacorig"
 		ignore "*.pacsave"
 		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "apk" ]; then
+		comment "new versions of conffiles, stored by apk"
+		ignore "*.apk-new"
+		nl
 	fi
 	
 	comment "old versions of files"
