@@ -1,0 +1,9 @@
+Hi,
+
+I have prepared a small change with very basic support for Alpine Linux.
+
+The change can be found here: https://github.com/HRio/etckeeper/commit/0afeb5b4585b2251e83cec32687ed6c99a39fb9a
+
+Thanks,
+
+/ Henrik
