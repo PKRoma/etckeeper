@@ -4,6 +4,8 @@ etckeeper (1.18.6) UNRELEASED; urgency=medium
     to avoid unncessary cron mails.
     Thanks, Nils Steinger.
   * Fix regex in 20-warn-problem-files.
+  * Added support for apk (alpine linux)
+    Thanks, Henrik Riomar.
 
  -- Joey Hess <id@joeyh.name>  Mon, 01 Aug 2016 13:29:54 -0400
 

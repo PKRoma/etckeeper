@@ -7,3 +7,5 @@ The change can be found here: https://github.com/HRio/etckeeper/commit/0afeb5b45
 Thanks,
 
 / Henrik
+
+> applied, thanks [[done]] --[[Joey]]
