@@ -1,0 +1,8 @@
+etckeeper 1.18.6 released with [[!toggle text="these changes"]]
+[[!toggleable text="""
+   * Only show errors (no progress indicators) when pushing Git/Mercurial repos
+     to avoid unncessary cron mails.
+     Thanks, Nils Steinger.
+   * Fix regex in 20-warn-problem-files.
+   * Added support for apk (alpine linux)
+     Thanks, Henrik Riomar."""]]

@@ -1,6 +1,0 @@
-etckeeper 1.18 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Send yum pre-commit output to /dev/null
-     Thanks, Andrew Colin Kissa
-   * Set LANG=C internally when doing some operations that have
-     been reported to fail in other locales."""]]
