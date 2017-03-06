@@ -222,7 +222,7 @@ letting it git add new files:
 etckeeper will notice if it's being run by way of sudo, and makes a commit
 with the author set to the user who sudoed to root. This is useful when
 a system has multiple admins; as long as they use sudo while doing their
-administration, and run `etckeeper commit` to commit their changes,
+administration, and run `sudo etckeeper commit` to commit their changes,
 `git blame` can show who was responsible for each change.
 
 ## changing VCS
