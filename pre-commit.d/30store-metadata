@@ -20,7 +20,11 @@ filter_ignore() {
 				;;
 			git)
 				(git ls-files -oi --exclude-standard; git ls-files -oi --exclude-standard --directory) | sort | uniq > "$listfile" || true
-				sed 's/^\.\///' | grep -xFvf "$listfile"
+				if [ -s "$listfile" ]; then
+					sed 's/^\.\///' | grep -xFvf "$listfile"
+				else
+					cat -
+				fi
 				;;
 		esac
 		rm -f "$listfile"
