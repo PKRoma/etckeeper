@@ -1,0 +1,60 @@
+#!/usr/bin/env bats
+#
+#
+
+[ -z "$testdir" ] && exit 1
+[ ! -d "$testdir" ] && exit 1
+
+export ETCKEEPER_CONF_DIR=$PWD
+export VCS=git
+
+metadata="$testdir/.etckeeper"
+chmod_str="maybe chmod"
+mkdir_str="mkdir -p"
+
+run() {
+	./etckeeper $1 -d "$testdir" "$2"
+}
+
+@test "test: etckeeper init" {
+	run init
+}
+
+@test "test: etckeeper commit" {
+	run commit "initial commit"
+	[ -f "$metadata" ]
+}
+
+@test "test: etckeeper commit empty dir" {
+	testdir2="testdir"
+	install -d $testdir/$testdir2
+	run commit "commit 2"
+	[ $(grep -E -c "^${mkdir_str} .*${testdir2}\'$" $metadata) -eq 1 ]
+}
+
+@test "test: etckeeper commit not empty dir" {
+	local testdir2="testdir"
+	install /dev/null $testdir/$testdir2/file
+	run commit "commit 3"
+	[ $(grep -E -c "^${mkdir_str} .*${testdir2}\'$" $metadata) -eq 0 ]
+}
+
+@test "test: etckeeper commit non-default mode" {
+	local testfile="file2"
+	local mode="0577"
+	install -m${mode} /dev/null $testdir/$testfile
+	run commit "commit 4"
+	[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}\'$" $metadata) -eq 1 ]
+}
+
+@test "test: etckeeper debug (git)" {
+	skip
+	git --git-dir $testdir/.git log --oneline --stat
+	git --git-dir $testdir/.git show --stat
+	false # return printouts for above commands
+}
+
+@test "test: etckeeper uninit -f" {
+	run uninit "-f"
+	[ ! -f "$metadata" ]
+}
