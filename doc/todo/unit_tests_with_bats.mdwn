@@ -1,0 +1,10 @@
+Hi,
+
+I have started to implement some basic unit test cases using bats for etckeeper.
+
+During that work I found one small issue also fixed in the branch.
+
+Could you please review: https://gitlab.com/HRio/etckeeper/commits/unit-test ?
+
+Thanks,
+ Henrik
