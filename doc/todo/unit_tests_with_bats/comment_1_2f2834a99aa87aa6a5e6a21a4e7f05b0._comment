@@ -1,0 +1,38 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2017-04-07T02:40:36Z"
+ content="""
+Wow, it's a very nice gift to add a test suite!
+
+When I tried running it on debian unstable, there were two test failures:
+
+	   (in test file test-etckeeper, line 32)
+	     `[ $(grep -E -c "^${mkdir_str} .*${testdir2}\'$" $metadata) -eq 1 ]' failed
+	 ✗ test: etckeeper commit non-default mode
+	   (in test file test-etckeeper, line 51)
+	     `[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}\'$" $metadata) -eq 1 ]' failed
+
+Unless your test suite found some bugs (which perhaps it did already, I
+noticed the bugfix commit fad539b0ed762a7f6bc1bd94e64351ef56a25f2a and
+have already merged that one), I think this must be a bug in the test
+suite. Perhaps a portability issue?
+
+Hmm, I think it's shell quoting fun:
+
+	$ grep file2 /tmp/f
+	maybe chmod 0577 './file2'
+	$ grep -E -c "^maybe chmod 0577 .*file2\'$" /tmp/f
+	0
+	$ grep -E -c '^maybe chmod 0577 .*file2'\''$' /tmp/f
+	1
+	$ echo "^maybe chmod 0577 .*file2\'$"
+	^maybe chmod 0577 .*file2\'$
+	$ echo '^maybe chmod 0577 .*file2'\''$'
+	^maybe chmod 0577 .*file2'$
+
+Indeed, when I change all the greps to not slash-escape the single quote,
+the test suite succeeds here. So why are those single quotes being slash-escaped?
+As far as I know, shells don't treat single quotes inside double quotes
+specially, and I don't think that egrep treats single quotes specially either.
+"""]]
