@@ -70,7 +70,7 @@ endif
 clean: etckeeper.spec etckeeper.version
 	rm -rf build
 
-check:
+test:
 	mkdir $(TESTDIR)
 	testdir=$(TESTDIR) ./test-etckeeper
 	rm -rf $(TESTDIR)
