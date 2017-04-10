@@ -8,3 +8,5 @@ Could you please review: https://gitlab.com/HRio/etckeeper/commits/unit-test ?
 
 Thanks,
  Henrik
+
+> merged the updated branch [[done]] --[[Joey]]
