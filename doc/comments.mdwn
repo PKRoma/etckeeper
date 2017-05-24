@@ -1,0 +1,9 @@
+[[!sidebar content="""
+[[!inline pages="comment_pending(*)" feedfile=pendingmoderation
+description="comments pending moderation" show=-1]]
+Comments in the [[!commentmoderation desc="moderation queue"]]:
+[[!pagecount pages="comment_pending(*)"]]
+"""]]
+
+Recent comments posted to this site:
+[[!inline pages="comment(*)" template="comment"]]
