@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="HRio"
+ avatar="http://cdn.libravatar.org/avatar/1e868a9a6e947b63de9250e8775c73ef"
+ subject="added"
+ date="2017-05-26T18:59:45Z"
+ content="""
+added fakeroot check to Makefile. Thanks for a very good suggestion.
+"""]]
