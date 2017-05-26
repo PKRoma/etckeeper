@@ -129,7 +129,9 @@ maybe_chmod_chown() {
 	q="'"
 	while read x; do
 		stat=$(stat -c "%f:%u:%g:%a:%U:%G" $x)
-		IFS=":" read mode uid gid perm uname gname <<< "$stat"
+		IFS=":" read mode uid gid perm uname gname <<EOF
+$stat
+EOF
 		x=$q$(echo $x | sed "s/$q/$q\"$q\"$q/")$q
 		if [ $uid -ne $euid ]; then
 			echo maybe chown "'$uname'" $x
