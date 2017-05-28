@@ -16,6 +16,7 @@ INSTALL=install
 INSTALL_EXE=${INSTALL}
 INSTALL_DATA=${INSTALL} -m 0644
 PYTHON=python
+FAKEROOT := $(shell command -v fakeroot 2> /dev/null)
 TESTDIR := $(shell mktemp -u -d)
 
 build: etckeeper.spec etckeeper.version
@@ -72,7 +73,11 @@ clean: etckeeper.spec etckeeper.version
 
 test:
 	mkdir $(TESTDIR)
+ifdef FAKEROOT
+	testdir=$(TESTDIR) fakeroot ./test-etckeeper
+else
 	testdir=$(TESTDIR) ./test-etckeeper
+endif
 	rm -rf $(TESTDIR)
 
 etckeeper.spec:

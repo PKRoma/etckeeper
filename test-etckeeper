@@ -16,10 +16,17 @@ export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_NAME"
 
 metadata="$testdir/.etckeeper"
 chmod_str="maybe chmod"
+chown_str="maybe chown"
+chgrp_str="maybe chgrp"
 mkdir_str="mkdir -p"
 
 run() {
 	./etckeeper $1 -d "$testdir" "$2"
+}
+
+check_root() {
+	# check if running in fakeroot or similar
+	[ $(id -u) -eq 0 ]
 }
 
 @test "test: etckeeper init" {
@@ -46,11 +53,43 @@ run() {
 }
 
 @test "test: etckeeper commit non-default mode" {
-	local testfile="file2"
+	local testfile="file4"
 	local mode="0577"
 	install -m${mode} /dev/null $testdir/$testfile
 	run commit "commit 4"
 	[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}'$" $metadata) -eq 1 ]
+}
+
+@test "root_test: check if root" {
+	if ! check_root; then
+		skip "need to use fakeroot, the rest of the root tests will be skipped as well"
+	fi
+}
+
+@test "root_test: create file owned by root:root" {
+	check_root || skip
+	local testfile="file5"
+	local mode="0644"
+	local owner="root"
+	local group="root"
+	install -o $owner -g $group -m $mode /dev/null $testdir/$testfile
+	run commit "commit 5"
+	[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}'$" $metadata) -eq 1 ]
+	[ $(grep -E -c "^${chown_str} '${owner}' .*${testfile}'$" $metadata) -eq 0 ]
+	[ $(grep -E -c "^${chgrp_str} '${group}' .*${testfile}'$" $metadata) -eq 0 ]
+}
+
+@test "root_test: create file owned by bin:daemon" {
+	check_root || skip
+	local testfile="file6"
+	local mode="0644"
+	local owner="bin"
+	local group="daemon"
+	install -o $owner -g $group -m $mode /dev/null $testdir/$testfile
+	run commit "commit 6"
+	[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}'$" $metadata) -eq 1 ]
+	[ $(grep -E -c "^${chown_str} '${owner}' .*${testfile}'$" $metadata) -eq 1 ]
+	[ $(grep -E -c "^${chgrp_str} '${group}' .*${testfile}'$" $metadata) -eq 1 ]
 }
 
 @test "test: etckeeper debug (git)" {
