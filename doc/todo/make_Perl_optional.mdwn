@@ -1,0 +1,17 @@
+Hi Joey,
+
+New change making Perl optional, on smaller systems:
+https://gitlab.com/HRio/etckeeper/tree/remove-perl-3-rebased
+
+It will use Perl if its installed or else fall back to Bourne Shell.
+
+"make test" passes on Alpine Linux without Perl installed.
+
+Can you please review?
+
+Thanks,
+ Henrik
+
+
+this change replaces:
+ https://etckeeper.branchable.com/todo/remove_remaining_perl_usage/
