@@ -121,26 +121,26 @@ maybe_chmod_chown() {
 			printf "maybe chmod %04o %s\n", $mode & 07777, $_;
 		'
 		return $?
-	fi
-
-	# fallback if perl isn't present
-	euid=$(id -u)
-	egid=$(id -g)
-	q="'"
-	while read x; do
-		stat=$(stat -c "%f:%u:%g:%a:%U:%G" $x)
-		IFS=":" read mode uid gid perm uname gname <<EOF
+	else
+		# fallback if perl isn't present
+		euid=$(id -u)
+		egid=$(id -g)
+		q="'"
+		while read x; do
+			stat=$(stat -c "%f:%u:%g:%a:%U:%G" $x)
+			IFS=":" read mode uid gid perm uname gname <<EOF
 $stat
 EOF
-		x=$q$(echo $x | sed "s/$q/$q\"$q\"$q/")$q
-		if [ $uid -ne $euid ]; then
-			echo maybe chown "'$uname'" $x
-		fi
-		if [ $gid -ne $egid ]; then
-			echo maybe chgrp "'$gname'" $x
-		fi
-		echo maybe chmod 0$perm $x
-	done
+			x=$q$(echo $x | sed "s/$q/$q\"$q\"$q/")$q
+			if [ $uid -ne $euid ]; then
+				echo maybe chown "'$uname'" $x
+			fi
+			if [ $gid -ne $egid ]; then
+				echo maybe chgrp "'$gname'" $x
+			fi
+			echo maybe chmod 0$perm $x
+		done
+	fi
 }
 
 if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
