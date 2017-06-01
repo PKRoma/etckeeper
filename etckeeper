@@ -125,15 +125,25 @@ if [ -z "$VCS" ]; then
 fi
 export VCS
 
-lsscripts() {
-	LANG=C perl -e '
-		$dir=shift;
-		print join "\n", grep { ! -d $_ && -x $_ }
-			grep /^\Q$dir\/\E[-a-zA-Z0-9]+$/,
-			glob "$dir/*";
-	' "$1"
-}
+if [ "$(which perl 2>/dev/null)" != "" ]; then
+	lsscripts() {
+		LANG=C perl -e '
+			$dir=shift;
+			print join "\n", grep { ! -d $_ && -x $_ }
+				grep /^\Q$dir\/\E[-a-zA-Z0-9]+$/,
+				glob "$dir/*";
+		' "$1"
+	}
 
-for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
-	"$script" "$@"
-done
+	for script in $(lsscripts "$ETCKEEPER_CONF_DIR/$command.d"); do
+		"$script" "$@"
+	done
+else
+	# fallback if perl isn't present
+	for script in $ETCKEEPER_CONF_DIR/$command.d/*; do
+		if [ ! -d "$script" -a -x "$script" ]; then
+			echo "$script" | egrep -q "/[-a-zA-Z0-9]+$"
+			[ $? -eq 0 ] && "$script" "$@"
+		fi
+	done
+fi
