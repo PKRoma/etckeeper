@@ -2,6 +2,9 @@ etckeeper (1.18.7) UNRELEASED; urgency=medium
 
   * Added some unit tests.
     Thanks, Henrik Riomar.
+  * etckeeper will work on systems that do not have perl installed.
+    (perl is still used when available as it's faster)
+    Thanks, William Johansson and radhus.
 
  -- Joey Hess <id@joeyh.name>  Mon, 10 Apr 2017 10:32:53 -0400
 

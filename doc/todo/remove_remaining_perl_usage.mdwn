@@ -2,3 +2,6 @@ In order to run etckeeper on e.g. embedded systems which does not have perl, I'v
 I have run this on my custom system and it works as expected for me.
 
 Link to github commit: <https://github.com/radhus/etckeeper/commit/d05837ed617bac0163a158ba1cfeca68994bc8f3>
+
+> [[done]]; another patch updated this one to address my review and has
+> been merged. --[[Joey]]
