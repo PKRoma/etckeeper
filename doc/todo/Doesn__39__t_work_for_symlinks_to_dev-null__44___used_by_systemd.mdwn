@@ -4,4 +4,4 @@ This is because git refuses to track symlinks to files which lie outside the git
 
 Supporting symlinks outside the repository is also required for /etc/alternatives.
 
-- Huh, I was 100% wrong. [done](/done). Some user error, I can't work out what though.
+- Huh, I was 100% wrong. [done](../done). Some user error, I can't work out what though.
