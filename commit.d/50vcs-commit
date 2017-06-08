@@ -41,9 +41,16 @@ else
 fi
 
 if [ "$VCS" = git ] && [ -d .git ]; then
+	# When not su'd to root, still set environment variables, 
+	# since git's own code to determine the author and committer
+	# has several edge cases where it fails and would prevent the
+	# commit.
+	if [ -z "$USER" ]; then
+		USER="$(whoami)"
+	fi
 	if [ -n "$USER" ]; then
 		# Use user.name and user.email from the gitconfig belonging
-		# to the user who became root.
+		# to USER.
 		USER_HOME="$(getent passwd "$USER" | cut -d: -f6)"
 		if [ -n "$USER_HOME" ] && [ -e "$USER_HOME/.gitconfig" ]; then
 			if [ -z "$GIT_AUTHOR_NAME" ]; then

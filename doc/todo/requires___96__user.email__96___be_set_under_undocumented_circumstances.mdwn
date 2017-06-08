@@ -34,3 +34,5 @@ This is not Ansible-specific: the last two conditions will also arise in the dai
 
 
 IMO, considering how to document this behaviour shows it to be user-unfriendly.  Therefore, it would be simplest if etckeeper could fall back to using `$(id -un)`, once `$(tty)` fails.
+
+> Set `USER=$(whoami)`, for git only. [[done]] --[[Joey]]
