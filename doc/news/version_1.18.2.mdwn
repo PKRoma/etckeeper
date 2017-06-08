@@ -1,7 +1,0 @@
-etckeeper 1.18.2 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Use getent utility instead of perl. (Elan Ruusamäe)
-   * Initial FreeBSD support with pkgng plugin. (William Johansson)
-   * Fix README.md symlink in package (Sebastian Schmidt, Antoine Beaupré,
-     closes: #[791566](http://bugs.debian.org/791566))
-   * Fix typo of GIT\_COMMITTER\_EMAIL."""]]
