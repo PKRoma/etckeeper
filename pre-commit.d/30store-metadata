@@ -59,6 +59,7 @@ generate_metadata() {
 	# Keep the sort order the same at all times.
 	LC_COLLATE=C
 	export LC_COLLATE
+	unset LC_ALL
 
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
