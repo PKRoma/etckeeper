@@ -1,0 +1,31 @@
+I use etckeeper from [pkgsrc](http://pkgsrc.se/sysutils/etckeeper) on NetBSD in a nightly cron job. My configuration for git includes `-q` but that isn't enough to fully silence it when there's nothing to commit, so I get an email from cron every night, even when there's nothing to commit. Amitai (schmonz) applied this patch to pkgsrc, and I thought you might like it upstream.
+
+Note that the patch will always skip attempting the commit, if there is nothing to commit, which is maybe not what you intended. But it's the only way to actually get silent nightlies. If you wanted to preserve backwards compatibility, it would be tricky, I think.
+
+There are also more-efficient ways to do this; the `diff` could be run right at the top of this script, and the rest of it skipped. But I wanted to be minimally-invasive, so I did it this way. 
+
+~~~
+diff --git a/etckeeper/commit.d/50vcs-commit b/etckeeper/commit.d/50vcs-commit
+index 2a2176a..bcd02df 100755
+--- a/etckeeper/commit.d/50vcs-commit
++++ b/etckeeper/commit.d/50vcs-commit
+@@ -87,10 +87,12 @@ if [ "$VCS" = git ] && [ -d .git ]; then
+                        export GIT_COMMITTER_EMAIL
+                fi
+        fi
+-       if [ -n "$logfile" ]; then
+-               git commit $GIT_COMMIT_OPTIONS -F "$logfile"
+-       else
+-               git commit $GIT_COMMIT_OPTIONS
++       if ! git diff --cached --quiet; then
++               if [ -n "$logfile" ]; then
++                       git commit $GIT_COMMIT_OPTIONS -F "$logfile"
++               else
++                       git commit $GIT_COMMIT_OPTIONS
++               fi
+        fi
+ elif [ "$VCS" = hg ] && [ -d .hg ]; then
+        if [ -n "$USER" ]; then
+~~~
+
+Thank you!
