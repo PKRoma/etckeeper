@@ -40,3 +40,8 @@ index f7c7580..f28d5ac 100755
 ~~~
 
 Thanks!
+
+> This change was already made to etckeeper back in 2014, there
+> is no "-not" in the etckeeper source code anywhere now.
+> I wonder why netbsd is apparently using such an out of date etckeeper.
+> Anyway, [[done]] --[[Joey]]
