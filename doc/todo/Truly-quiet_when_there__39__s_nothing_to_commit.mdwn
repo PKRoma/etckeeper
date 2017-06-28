@@ -29,3 +29,6 @@ index 2a2176a..bcd02df 100755
 ~~~
 
 Thank you!
+
+> [[closed|done]] because `etckeeper unclean` is a better way to do this.
+> --[[Joey]]
