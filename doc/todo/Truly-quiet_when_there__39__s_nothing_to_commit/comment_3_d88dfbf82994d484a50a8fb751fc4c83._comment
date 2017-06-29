@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="truist"
+ avatar="http://cdn.libravatar.org/avatar/cbb99b0a9724faf8fc7f4464b7bfab11"
+ subject="comment 3"
+ date="2017-06-29T16:30:56Z"
+ content="""
+I see why I used `--cached` - because `30git-add` runs before this script, so the files to be added are always already cached by the time this script runs. Doing the diff without `--cached` wouldn't work.
+
+However, your solution is still better, in case users have customized the scripts. 
+"""]]
