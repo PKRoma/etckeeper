@@ -1,0 +1,37 @@
+[[!comment format=mdwn
+ username="http://roschacker.id.mail.ru/"
+ subject="make install"
+ date="2017-07-15T13:52:11Z"
+ content="""
+root@LEDE:~/etckeeper.branchable.com# make
+sed -i~ \"s/Version:.*/Version: $(perl -e '$_=<>;m/\((.*?)(-.*)?\)/;print $1;'<debian/changelog)/\" etckeeper.spec
+/bin/sh: perl: not found
+rm -f etckeeper.spec~
+sed -i~ \"s/Version:.*/Version: $(perl -e '$_=<>;m/\((.*?)(-.*)?\)/;print $1;' <debian/changelog)\\"/\" etckeeper
+/bin/sh: perl: not found
+rm -f etckeeper~
+python ./etckeeper-bzr/__init__.py build || echo \"** bzr support not built\"
+Traceback (most recent call last):
+  File \"./etckeeper-bzr/__init__.py\", line 6, in <module>
+    from bzrlib.errors import BzrError
+ImportError: No module named bzrlib.errors
+** bzr support not built
+python ./etckeeper-dnf/etckeeper.py build || echo \"** DNF support not built\"
+Traceback (most recent call last):
+  File \"./etckeeper-dnf/etckeeper.py\", line 10, in <module>
+    from dnfpluginscore import logger
+ImportError: No module named dnfpluginscore
+** DNF support not built
+root@LEDE:~/etckeeper.branchable.com#
+root@LEDE:~/etckeeper.branchable.com#
+root@LEDE:~/etckeeper.branchable.com# make install
+sed -i~ \"s/Version:.*/Version: $(perl -e '$_=<>;m/\((.*?)(-.*)?\)/;print $1;' <debian/changelog)\\"/\" etckeeper
+/bin/sh: perl: not found
+rm -f etckeeper~
+mkdir -p /etc/etckeeper/ /var/cache/etckeeper/
+cp -R *.d /etc/etckeeper/
+install  daily /etc/etckeeper/daily
+make: install: Command not found
+make: *** [Makefile:29: install] Error 127
+root@LEDE:~/etckeeper.branchable.com#
+"""]]
