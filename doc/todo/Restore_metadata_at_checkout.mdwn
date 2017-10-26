@@ -1,0 +1,14 @@
+Every time I switch a branch and files get replaced, they are not in the chmod they should be (because of my umask). So I've added a post-checkout hook "etckeeper init".
+
+Do I understand it right, that this doesn't do anything but setting the file permissions correctly, as per .etckeeper file?
+
+Saving metadata i.e. file permissions is the primary reason using etckeeper instead of plain git. What would speak against setting that up by default?
+
+
+---
+/etc/.git/hooks/post-checkout:
+
+    #!/bin/sh
+    # post-checkout hook for etckeeper, to restore metadata
+    set -e
+    etckeeper init -d /etc
