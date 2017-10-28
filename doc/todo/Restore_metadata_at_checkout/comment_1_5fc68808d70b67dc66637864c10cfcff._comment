@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2017-10-28T14:44:55Z"
+ content="""
+Such a post-checkout hook makes sense, and yes, `etckeeper init` only
+restores file permissions when run in an existing repository.
+
+Do note that there's a window where files that are supposed to be private
+may be exposed, depending on your umask, before the permissions are fixed
+up. So I can't completely recommend doing this. It might be good to make
+it install a post-checkout hook that both fixes the permissions and warns
+that what the user is doing is not entirely safe.
+"""]]
