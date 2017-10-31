@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="max@ef057623bb9d28c59f71a915db505de5795c9d25"
+ nickname="max"
+ avatar="http://cdn.libravatar.org/avatar/359dbffc8765406159ef904eedde50be"
+ subject="comment 2"
+ date="2017-10-31T02:44:29Z"
+ content="""
+Okay, thanks for your reply! Actually my umask is more restrictive than the default, so privacy is not an issue here (Systemd bizarrely complains about files being too restricted...)
+"""]]
