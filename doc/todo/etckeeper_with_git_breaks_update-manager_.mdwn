@@ -3,7 +3,7 @@
 
 I have configured etckeeper to use git. It works fine if I use apt-get or synaptic packet manager.
 
-But when the update-manger install new packet versions it ends with an "installation failed" message. When I check the status of the git repository in the etc directory, some changes are not commited, e.g.:
+But when the update-manger install new packet versions it ends with an "installation failed" message. When I check the status of the git repository in the etc directory, some changes are not committed, e.g.:
 
     On branch master
     Changes to be committed:
