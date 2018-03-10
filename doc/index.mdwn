@@ -20,4 +20,5 @@ understand the basics of working with version control.
 [[install]]  
 [[news]]  
 [[todo]]  
+[[forum]]  
 """]]
