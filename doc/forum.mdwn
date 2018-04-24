@@ -2,3 +2,14 @@ This is a place to discuss using etckeeper, share tips and tricks, etc.
 If you need help, advice, or anything, post about it here.
 
 [[!inline pages="forum/* and !*/Discussion" archive=yes rootpage=forum postformtext="Add a new thread titled:"]]
+
+I get this warning:
+
+etckeeper warning: hardlinked files could cause problems with git:
+PackageKit/events/post-transaction.d/README
+PackageKit/events/pre-transaction.d/README
+
+What kind of problems can happen?
+
+In my use case it is no problem if the hardlink gets lost and two individual files
+are in the repo.
