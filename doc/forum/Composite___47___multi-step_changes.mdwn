@@ -1,0 +1,32 @@
+I'd like to be able to `commit` a single change into etckeeper's VCS that reflected more than one `apt` action.
+
+As a developer I prefer to see commits representing a logically complete piece of work,
+not something that requires follow-on commits before the system is back in a sane / consistent state.
+
+Consider the case of installing Sublime Text for Linux (** - see bottom), 
+there are several steps, all of which are parts of a single logical action that should be committed as one operation into git (or whatever VCS).
+
+* wget ... | apt-key add -
+* apt-get install apt-transport-https
+* create  /etc/apt/sources.list.d/sublime-text.list
+* apt-get update
+* apt-get install sublime-text
+
+Ideally the work-flow would look like:
+
+* etckeeper begin-transaction
+* wget ... | apt-key add -
+* git add apt/trusted.gpg
+* apt-get install apt-transport-https
+  # etckeeper WARNS about uncommitted changes / transaction still open
+  # (instead of aborting)
+* create  /etc/apt/sources.list.d/sublime-text.list
+* git add      apt/sources.list.d/sublime-text.list
+* apt-get update
+  # etckeeper WARNS...
+* apt-get install sublime-text
+  # etckeeper WARNS...
+* etckeeper finish-transaction # commits to VCS
+
+
+(*) https://www.sublimetext.com/docs/3/linux_repositories.html
