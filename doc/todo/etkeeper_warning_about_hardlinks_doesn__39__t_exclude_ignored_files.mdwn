@@ -1,0 +1,16 @@
+Etckeeper checks for possible hardlinks in the file `/etc/etckeeper/pre-commit.d/20warn-problem-files`
+
+but it doesn't seem to exclude the files that match the ".gitignore" directives.
+
+Tested:
+
+    # cat .gitignore | grep -i py
+    *.pyc
+    *.pyo
+
+
+    15:12 root@someserver:/etc/fail2ban/action.d
+    # ls -l smtp.pyc
+    -rw-r--r-- 2 root root 5921 Jul 13  2017 smtp.pyc
+
+It would be better, for monitoring reasons, to exclude all those files that fall in the .gitignore pattern, as they won't be tracked anyway.
