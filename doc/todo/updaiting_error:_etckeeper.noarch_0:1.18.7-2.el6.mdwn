@@ -1,0 +1,10 @@
+I have installed version: 1.18.5
+Trying to update: yum update from epel.
+
+getting error:
+
+Error: Package: etckeeper-1.18.7-2.el6.noarch (epel)
+           Requires: hostname
+
+
+OS version: CentOS release 6.9 (Final)
