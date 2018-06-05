@@ -4,6 +4,9 @@ etckeeper (1.18.8) UNRELEASED; urgency=medium
     reasonable default values for GIT_COMMITTER_EMAIL etc.
     This was already done as part of the su/sudo handling,
     and is now always done.
+  * Don't hardcode the master branch when pushing to PUSH_REMOTE.
+    Instead, let git push whatever branches it is configured to
+    push to that remote.
 
  -- Joey Hess <id@joeyh.name>  Thu, 08 Jun 2017 13:22:01 -0400
 
