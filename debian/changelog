@@ -1,4 +1,4 @@
-etckeeper (1.18.8) UNRELEASED; urgency=medium
+etckeeper (1.18.8) unstable; urgency=medium
 
   * Work around git commit's lack of robustness, by providing
     reasonable default values for GIT_COMMITTER_EMAIL etc.
@@ -8,7 +8,7 @@ etckeeper (1.18.8) UNRELEASED; urgency=medium
     Instead, let git push whatever branches it is configured to
     push to that remote.
 
- -- Joey Hess <id@joeyh.name>  Thu, 08 Jun 2017 13:22:01 -0400
+ -- Joey Hess <id@joeyh.name>  Tue, 05 Jun 2018 16:00:41 -0400
 
 etckeeper (1.18.7) unstable; urgency=medium
 
