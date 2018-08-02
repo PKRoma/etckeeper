@@ -1,0 +1,8 @@
+It would be great if the function generate_metadata() in pre-commit.d/30store-metadata would not only filter ignore patterns from .gitignore, but if it would also filter any files inside Git sub modules.
+
+Information about Git sub modules is being stored in a .gitmodules files, similar to this (example):
+```
+[submodule "path/to/dir"]
+        path = path/to/dir
+        url = https://...
+```
