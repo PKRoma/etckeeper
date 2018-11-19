@@ -13,3 +13,55 @@ What kind of problems can happen?
 
 In my use case it is no problem if the hardlink gets lost and two individual files
 are in the repo.
+
+
+
+
+
+
+
+
+
+-----------------------------
+
+Thomas Güttler Nov 2018
+
+
+
+ use etckeeper to track changes in /etc.
+
+Up to now the output of git log looks like this:
+
+commit c2364fd9a8465b07a1c31fafeb9ff4e4323770fe
+Author: Etckeeper running on foo-host <root@foo-host>
+Date:   Fri Aug 10 00:00:08 2018 +0200
+
+    daily
+
+commit d7b685f5f1a01b3f80b86202d6c461dac13b40ac
+Author: Etckeeper running on foo-host <root@foo-host>
+Date:   Wed Aug 8 00:00:07 2018 +0200
+
+    daily
+
+commit dd44e35ecdb27edad37763e88334fc659fd22ff1
+Author: Etckeeper running on foo-host <root@foo-host>
+Date:   Tue Aug 7 00:00:04 2018 +0200
+
+    daily
+
+commit f6b090e82c6d518be21c8b91f3f7999fbe1330db
+Author: Etckeeper running on foo-host <root@foo-host>
+Date:   Tue Jul 24 00:00:08 2018 +0200
+
+    daily
+
+....
+
+I would like to see which files have changed.
+
+Is there a way to get the list of changed files into the commit message of etckeeper?
+
+In most cases only one to three files change.
+
+If more than three files change, then it is enough to show the number of changed files.
