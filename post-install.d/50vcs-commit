@@ -3,8 +3,21 @@ set -e
 
 pl="/var/cache/etckeeper/packagelist"
 
+# Parent process is etckeeper
+ETCKEEPER_PID=$( ps -ho ppid "${PPID}" | sed 's/^ *//' )
+
+# Find the parent of etckeeper and get the command line of the process
+if ! [ -z "${ETCKEEPER_PID}" ]; then
+	ETCKEEPER_PPID=$( ps -ho ppid "${ETCKEEPER_PID}" | sed 's/^ *//' )
+	ETCKEEPER_PARENT_COMMAND_LINE=$( ps -ho args "${ETCKEEPER_PPID}" )
+fi
+
 if etckeeper unclean; then
-	message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
+	if [ -z "${ETCKEEPER_PARENT_COMMAND_LINE}" ]; then
+		message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
+	else
+		message="committing changes in /etc after run \"$ETCKEEPER_PARENT_COMMAND_LINE\""
+	fi
 
 	set +e
 	if [ -e $pl.pre-install ] && [ "$(cat $pl.fmt 2>/dev/null || true)" = "$(etckeeper list-installed fmt)" ]; then
