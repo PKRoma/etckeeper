@@ -1,3 +1,11 @@
+etckeeper (1.18.9) unstable; urgency=medium
+
+  * When run during a package installation, include in the commit
+    message the command line that caused etckeeper to run.
+    Thanks, Laszlo Gombos
+
+ -- Joey Hess <id@joeyh.name>  Wed, 12 Dec 2018 01:01:05 -0400
+
 etckeeper (1.18.8) unstable; urgency=medium
 
   * Work around git commit's lack of robustness, by providing

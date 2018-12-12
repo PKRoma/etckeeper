@@ -1,5 +1,5 @@
 Name: etckeeper
-Vaersion: 1.18.7
+Vaersion: 1.18.9
 Release: 4%{?dist}
 Summary: store /etc in git, mercurial, bzr or darcs
 
