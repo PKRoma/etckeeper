@@ -1,0 +1,29 @@
+Hi,
+
+The following commit:
+    
+    ec8d1ad Add the package manager or any other parent process command to the commit log
+
+breaks etckeeper on systems with Busybox ps:
+
+
+    ps: unrecognized option: h
+    BusyBox v1.29.3 (2018-11-21 11:45:56 UTC) multi-call binary.
+    
+    Usage: ps [-o COL1,COL2=HEADER]
+    
+    Show list of processes
+   
+           -o COL1,COL2=HEADER     Select columns for display
+
+
+From the Debian manpage on the `h` option:
+
+    h      No header.  (or, one header per screen in the BSD personality).  The h option is problematic.  Standard BSD ps uses this
+              option to print a header on each page of output, but older Linux ps uses this option to totally disable the header.  This
+              version of ps follows the Linux usage of not printing the header unless the BSD personality has been selected, in which case
+              it prints a header on each page of output.  Regardless of the current personality, you can use the long options --headers
+              and --no-headers to enable printing headers each page or disable headers entirely, respectively.
+
+
+So the use of `h` could affect the portability of `etckeeper` and the problem is not limited to Busybox `ps`.
