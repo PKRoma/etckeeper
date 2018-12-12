@@ -16,7 +16,7 @@ if etckeeper unclean; then
 	if [ -z "${ETCKEEPER_PARENT_COMMAND_LINE}" ]; then
 		message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
 	else
-		message="committing changes in /etc after run \"$ETCKEEPER_PARENT_COMMAND_LINE\""
+		message="committing changes in /etc made by \"$ETCKEEPER_PARENT_COMMAND_LINE\""
 	fi
 
 	set +e
