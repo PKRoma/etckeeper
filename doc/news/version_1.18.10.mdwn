@@ -1,0 +1,5 @@
+etckeeper 1.18.10 released with [[!toggle text="these changes"]]
+[[!toggleable text="""
+   * Avoid post-install failing when ps is from busybox or another
+     version not supporting procps-specific options.
+   * Use ps --no-headers rather than problimatic -h option."""]]

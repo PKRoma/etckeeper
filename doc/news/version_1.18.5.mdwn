@@ -1,8 +1,0 @@
-etckeeper 1.18.5 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Make etckeeper commit store metadata changes. The pre-commit
-     hook has always (and continues) to do that, but pre-commit is only
-     run when there are changes to tommit. This makes metadata-only
-     changes get committed.
-   * Move systemd files to /lib/systemd; /usr/lib/systemd is not used
-     on Debian."""]]
