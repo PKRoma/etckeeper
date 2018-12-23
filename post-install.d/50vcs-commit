@@ -4,12 +4,14 @@ set -e
 pl="/var/cache/etckeeper/packagelist"
 
 # Parent process is etckeeper
-ETCKEEPER_PID=$( ps -ho ppid "${PPID}" | sed 's/^ *//' )
+# (Only procps ps is currently supported, others will fail,
+# so this may end up empty.)
+ETCKEEPER_PID=$( ps --no-headers -o ppid "${PPID}" 2>/dev/null | sed 's/^ *//' )
 
 # Find the parent of etckeeper and get the command line of the process
 if ! [ -z "${ETCKEEPER_PID}" ]; then
-	ETCKEEPER_PPID=$( ps -ho ppid "${ETCKEEPER_PID}" | sed 's/^ *//' )
-	ETCKEEPER_PARENT_COMMAND_LINE=$( ps -ho args "${ETCKEEPER_PPID}" )
+	ETCKEEPER_PPID=$( ps --no-headers -o ppid "${ETCKEEPER_PID}" | sed 's/^ *//' )
+	ETCKEEPER_PARENT_COMMAND_LINE=$( ps --no-headers -o args "${ETCKEEPER_PPID}" )
 fi
 
 if etckeeper unclean; then
@@ -37,5 +39,5 @@ if etckeeper unclean; then
 		echo "warning: etckeeper failed to commit changes in /etc using $VCS" >&2
 	fi
 fi
-	
+
 rm -f $pl.pre-install $pl.fmt
