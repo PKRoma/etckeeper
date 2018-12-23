@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2018-12-23T16:52:32Z"
+ content="""
+Another problem with busybox ps and that patch is that while `ps 1`
+normally shows only pid 1, `busybox ps 1` lists all pids.
+
+So it doesn't seem that code path can support busybox ps at all,
+and probably the safest thing to do is to use --no-headers to make procps's
+ps always do the right thing no matter how configured, and if that fails,
+/dev/null the error and fall back to not including the command line in
+the commit message.
+"""]]
