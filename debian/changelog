@@ -1,10 +1,10 @@
-etckeeper (1.18.10) UNRELEASED; urgency=medium
+etckeeper (1.18.10) unstable; urgency=medium
 
   * Avoid post-install failing when ps is from busybox or another
     version not supporting procps-specific options.
   * Use ps --no-headers rather than problimatic -h option.
 
- -- Joey Hess <id@joeyh.name>  Sun, 23 Dec 2018 13:01:28 -0400
+ -- Joey Hess <id@joeyh.name>  Sun, 23 Dec 2018 13:05:44 -0400
 
 etckeeper (1.18.9) unstable; urgency=medium
 
