@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="https://peterjmello.wordpress.com/"
+ nickname="RogueScholar"
+ avatar="http://cdn.libravatar.org/avatar/2d57e52a1ae78a222266afb46fe3c1c4"
+ subject="Also relevant to Entware"
+ date="2019-01-04T10:26:46Z"
+ content="""
+I was just thinking that it would be nice to have etckeeper operating on my home networking gear similar to how I use it on my PCs. Since they all run either OpenWRT or Tomato/Merlin, a package that interfaced with the opkg management system would be ideal. Specifically it's the fact that the directory it would need to monitor would be /opt/etc and not /etc that I'm not quite sure how to go about implementing.
+
+Has there been any movement on this process? I'd be happy to put my shoulder to the wheel on it if someone with more familiarity with the codebase could describe the tasks involved. Failing that I'd be happy to test anyone else's attempts. Huge fan of the project, thanks so much for all the work that's been put in on it to date.
+"""]]
