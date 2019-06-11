@@ -1,0 +1,13 @@
+[[!comment format=mdwn
+ username="webknjaz@282aadd575f8161e52a787ad51e8ba046b8289a9"
+ nickname="webknjaz"
+ avatar="http://cdn.libravatar.org/avatar/6268a71f6afd8dc3875df5624f8bf85c"
+ subject="Reference to the corresponding bug analysis in Ansible "
+ date="2019-06-06T20:16:40Z"
+ content="""
+Hi,
+
+I've been tracking down this issue on the Ansible side and just wanted to share [this comment on GitHub](https://github.com/ansible/ansible/issues/54949#issuecomment-499541669).
+
+Any estimations on when this gets applied upstream?
+"""]]
