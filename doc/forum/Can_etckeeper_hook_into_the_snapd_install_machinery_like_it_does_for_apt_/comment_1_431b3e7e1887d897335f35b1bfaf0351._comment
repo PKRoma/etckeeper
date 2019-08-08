@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2019-08-08T15:25:59Z"
+ content="""
+Whether that is possible depends on what hooks, if any,
+snapd supports.
+
+etckeeper's todo list is here: [[todo]]
+"""]]
