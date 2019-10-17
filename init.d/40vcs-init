@@ -1,17 +1,18 @@
 #!/bin/sh
 set -e
 
+description="$(hostname 2>/dev/null || cat /etc/hostname) /etc repository"
 if [ "$VCS" = git ] && [ ! -e .git ]; then
 	git init
-	echo "$(hostname) /etc repository" > .git/description
+	echo "$description" > .git/description
 elif [ "$VCS" = hg ] && [ ! -e .hg ]; then
 	hg init
 	echo  "[web]" > .hg/hgrc
-	echo  "description = $(hostname) /etc repository" >> .hg/hgrc
+	echo  "description = $description" >> .hg/hgrc
 elif [ "$VCS" = bzr ] && [ ! -e .bzr ]; then
 	bzr init
-	bzr nick "$(hostname) /etc repository"
+	bzr nick "$description"
 elif [ "$VCS" = darcs ] && [ ! -e _darcs ]; then
 	darcs initialize
-	echo "$(hostname) /etc repository" > _darcs/prefs/motd
+	echo "$description" > _darcs/prefs/motd
 fi

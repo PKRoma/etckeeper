@@ -21,7 +21,7 @@ else
 	logfile=""
 fi
 
-hostname=`hostname`
+hostname=`hostname 2>/dev/null || cat /etc/hostname)`
 hostname="${hostname%%.*}"
 dnsdomainname=`dnsdomainname 2>/dev/null || true`
 if [ -n "$dnsdomainname" ]; then
