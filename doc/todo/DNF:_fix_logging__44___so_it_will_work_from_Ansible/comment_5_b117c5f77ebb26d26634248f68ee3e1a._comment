@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="alan.christopher.jenkins@a53b5c6056bc7d7b09e181c23cc2ec8362fa7abe"
+ nickname="alan.christopher.jenkins"
+ avatar="http://cdn.libravatar.org/avatar/599d943d715a521e4c23ab2a46ac70dc"
+ subject="How about &quot;etckeeper > /dev/null&quot; ?"
+ date="2019-10-28T17:08:20Z"
+ content="""
+See same github repo, branch \"dnf2\", commit 7cda9678b1e60c0495a2a522721b319843d5fae0
+
+Sorry for the delay. I can't find a record of an email notification.
+
+In response to Joey's comment, I've tried sending all the etckeeper output to /dev/null.  I find the resulting code more friendly to read, because it avoids my very long code comment :).
+
+I interpreted \"in this case\" as just meaning \"in etckeeper-dnf\".  I think you could technically check whether you are dnf v.s. a different libdnf client like Ansible, but I didn't want to :).
+
+syslog.syslog() did not seem very helpful.  In python2 it appears to encode unicode using ascii, regardless of the locale.  I think we might be able to drop support for python2-dnf.  But still, the system log seems a bit unexpected, compared to stderr, /var/log/dnf.plugin.log, /var/log/dnf.log, or whatever custom logger the host program set up.
+"""]]
