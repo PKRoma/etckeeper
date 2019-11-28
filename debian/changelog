@@ -1,10 +1,17 @@
-etckeeper (1.18.11) UNRELEASED; urgency=medium
+etckeeper (1.18.11) unstable; urgency=medium
 
   * Support platforms without a hostname command, fall back to 
     reading /etc/hostname.
     Thanks, Chris Morgan
+  * commit: Support -mmessage, without a space, since eg git commit
+    can be used that way.
+    Thanks, martin f. krafft
+  * commit: When multiple parameters are given, use them all as the commit
+    message, instead of the old behavior of only using the first parameter and
+    throwing the rest away.
+    Thanks, martin f. krafft
 
- -- Joey Hess <id@joeyh.name>  Thu, 17 Oct 2019 10:13:46 -0400
+ -- Joey Hess <id@joeyh.name>  Thu, 28 Nov 2019 18:14:46 -0400
 
 etckeeper (1.18.10) unstable; urgency=medium
 
