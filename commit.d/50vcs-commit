@@ -15,7 +15,7 @@ if [ -n "$1" ]; then
 		if [ "x$1" = "x-m" ]; then
 			shift 1
 		fi
-		echo "${1#-m}" > "$logfile"
+		echo "${@#-m}" > "$logfile"
 	fi
 else
 	logfile=""
