@@ -1,0 +1,4 @@
+etckeeper 1.18.12 released with [[!toggle text="these changes"]]
+[[!toggleable text="""
+   * Fix bug in hostname determination in the previous release.
+     Thanks, Christian Hesse"""]]

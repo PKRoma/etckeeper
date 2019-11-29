@@ -1,8 +1,0 @@
-etckeeper 1.18.7 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Added some unit tests.
-     Thanks, Henrik Riomar.
-   * etckeeper will work on systems that do not have perl installed.
-     (perl is still used when available as it's faster)
-     Thanks, William Johansson and radhus.
-   * Prevent LC\_ALL overriding the LC\_COLLATE used to sort metadata."""]]
