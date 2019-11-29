@@ -1,3 +1,10 @@
+etckeeper (1.18.12) unstable; urgency=medium
+
+  * Fix bug in hostname determination in the previous release.
+    Thanks, Christian Hesse
+
+ -- Joey Hess <id@joeyh.name>  Fri, 29 Nov 2019 11:42:34 -0400
+
 etckeeper (1.18.11) unstable; urgency=medium
 
   * Support platforms without a hostname command, fall back to 
