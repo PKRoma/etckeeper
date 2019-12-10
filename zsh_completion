@@ -1,0 +1,34 @@
+#compdef etckeeper
+
+local _VCS=$(sed -n "s,^VCS=\([\"']\?\)\(.*\)\1$,\2,p"
+    ${ETCKEEPER_CONF_DIR:-/etc/etckeeper}/etckeeper.conf 2>/dev/null)
+
+_arguments '--help[show this help message and exit]' \
+    '--version[show version information]' \
+    ":etckeeper command:(/etc/etckeeper/*.d(/:t:r))" \
+    '*::subcmd:->subcmd' && return 0
+
+case "$words[1]" in
+(commit)
+    _arguments ':message text: '
+    ;;
+(update-ignore)
+    _arguments '-a[add a "managed by etckeeper" block]'
+    ;;
+(uninit)
+    _arguments '-f[force uninit without prompting]'
+    ;;
+(vcs)
+    case $_VCS in
+    (git)
+        service=git
+        _git
+        ;;
+    (*)
+        _$_VCS
+        ;;
+    esac
+    ;;
+(*)
+    ;;
+esac

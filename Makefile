@@ -10,7 +10,8 @@ etcdir=/etc
 mandir=${prefix}/share/man
 vardir=/var
 systemddir=/lib/systemd/system
-completiondir=${prefix}/share/bash-completion/completions
+bashcompletiondir=${prefix}/share/bash-completion/completions
+zshcompletiondir=${prefix}/share/zsh/vendor-completions
 CP=cp -R
 INSTALL=install 
 INSTALL_EXE=${INSTALL}
@@ -32,8 +33,10 @@ install: etckeeper.version
 	$(INSTALL_EXE) etckeeper $(DESTDIR)$(bindir)/etckeeper
 	mkdir -p $(DESTDIR)$(mandir)/man8
 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
-	mkdir -p $(DESTDIR)$(completiondir)
-	$(INSTALL_DATA) bash_completion $(DESTDIR)$(completiondir)/etckeeper
+	mkdir -p $(DESTDIR)$(bashcompletiondir)
+	$(INSTALL_DATA) bash_completion $(DESTDIR)$(bashcompletiondir)/etckeeper
+	mkdir -p $(DESTDIR)$(zshcompletiondir)
+	$(INSTALL_DATA) zsh_completion $(DESTDIR)$(zshcompletiondir)/_etckeeper
 	mkdir -p $(DESTDIR)$(systemddir)
 	$(INSTALL_DATA) systemd/etckeeper.service $(DESTDIR)$(systemddir)/etckeeper.service
 	$(INSTALL_DATA) systemd/etckeeper.timer $(DESTDIR)$(systemddir)/etckeeper.timer
