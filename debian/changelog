@@ -1,3 +1,10 @@
+etckeeper (1.18.13) UNRELEASED; urgency=medium
+
+  * Added zsh completion.
+    Thanks, James Rowe
+
+ -- Joey Hess <id@joeyh.name>  Fri, 13 Dec 2019 09:17:48 -0500
+
 etckeeper (1.18.12) unstable; urgency=medium
 
   * Fix bug in hostname determination in the previous release.
