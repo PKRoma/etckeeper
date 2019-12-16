@@ -10,4 +10,4 @@ From https://git.joeyh.name/index.cgi/etckeeper.git/tree/update-ignore.d/01updat
 
 > \#ignore "gshadow-"
 
-But I can't understand the reason, considering that ignoring these backup files justs leaves them there so admins can still use them. In the other hand, having the original files (e.g. `passwd`) under version control will provide the expected history of changes.
+But I can't understand the reason, considering that ignoring these backup files justs leaves them there so admins can still use them. In the other hand, having the original files (e.g. `passwd`) under version control will provide admins the expected history of changes.
