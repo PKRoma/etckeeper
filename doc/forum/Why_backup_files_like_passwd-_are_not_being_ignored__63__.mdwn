@@ -1,9 +1,13 @@
 From https://git.joeyh.name/index.cgi/etckeeper.git/tree/update-ignore.d/01update-ignore#n110:
 
-> # Not currently ignored as admins tend to rely on these files.
-> #ignore "passwd-"
-> #ignore "group-"
-> #ignore "shadow-"
-> #ignore "gshadow-"
+> \# Not currently ignored as admins tend to rely on these files.
+
+> \#ignore "passwd-"
+
+> \#ignore "group-"
+
+> \#ignore "shadow-"
+
+> \#ignore "gshadow-"
 
 But I can't understand the reason, considering that ignoring these backup files justs leaves them there so admins can still use them. In the other hand, having the original files (e.g. `passwd`) under version control will provide the expected history of changes.
