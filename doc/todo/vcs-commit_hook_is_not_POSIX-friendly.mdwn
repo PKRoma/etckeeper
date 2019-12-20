@@ -29,3 +29,5 @@ The bug suggests a patch that uses `sed` instead of that pattern substitution:
      	logfile=""
 
 Thanks! -- [[anarcat]]
+
+> [[done]] --[[Joey]]
