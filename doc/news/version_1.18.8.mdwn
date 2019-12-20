@@ -1,9 +1,0 @@
-etckeeper 1.18.8 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Work around git commit's lack of robustness, by providing
-     reasonable default values for GIT\_COMMITTER\_EMAIL etc.
-     This was already done as part of the su/sudo handling,
-     and is now always done.
-   * Don't hardcode the master branch when pushing to PUSH\_REMOTE.
-     Instead, let git push whatever branches it is configured to
-     push to that remote."""]]

@@ -1,0 +1,6 @@
+etckeeper 1.18.13 released with [[!toggle text="these changes"]]
+[[!toggleable text="""
+   * Added zsh completion.
+     Thanks, James Rowe
+   * commit: Recent changes added code that does not work on all POSIX shells.
+     Fixed by Thorsten Glaser."""]]
