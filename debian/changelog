@@ -1,11 +1,11 @@
-etckeeper (1.18.13) UNRELEASED; urgency=medium
+etckeeper (1.18.13) unstable; urgency=medium
 
   * Added zsh completion.
     Thanks, James Rowe
   * commit: Recent changes added code that does not work on all POSIX shells.
     Fixed by Thorsten Glaser.
 
- -- Joey Hess <id@joeyh.name>  Fri, 13 Dec 2019 09:17:48 -0500
+ -- Joey Hess <id@joeyh.name>  Fri, 20 Dec 2019 16:19:09 -0400
 
 etckeeper (1.18.12) unstable; urgency=medium
 
