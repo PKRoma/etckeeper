@@ -2,7 +2,14 @@ I've installed etckeeper & git on a new machine running arch.  I've got sudo and
 
 ---
 
+[[!comment  format=mdwn
+username="https://peterjmello.wordpress.com/"
+nickname="RogueScholar"
+date="2020-01-10T19:22:30-0800"
+content="""
 One possible solution to your issue would be to edit `/etc/etckeeper/etckeeper.conf` and change the VCS variable value to include the location of your gitconfig file. Assuming yours is in the default location of `~/.gitconfig` that would mean changing it from `VCS="git"` to `VCS="git -f /home/<yourusername>/.gitconfig"` (be sure to use the canonical path to the file rather than relying on the `~` alias for your home directory because in this instance ~ points to `/root`).
 
 -Peter
->[[!fortune  ]]
+"""
+]]
+>[[!fortune ]]
