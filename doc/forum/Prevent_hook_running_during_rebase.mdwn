@@ -1,0 +1,24 @@
+Normally, when I wish to fix or clean up history I’ll do The Right Thing(clone
+`/etc` repo, edit, and force `pull` the changes).  *However*, occasionally I’ll
+perform a quick in-place `rebase` when the depth is *very* shallow or will be
+non-destructive.
+
+If — like me — you do this then you’ve probably been bitten by `.etckeeper`
+breakage when simply re-ordering commits.  If so, then the following addition to
+your `.git/hooks/pre-commit` will prevent the hook running while in a `rebase`
+session.
+
+```
+if git branch | grep -q '^\* (no branch'; then
+    echo "Skipping pre-commit hook in rebase" >&2
+    exit 0
+fi
+```
+
+**Note**: The unbalanced parenthesis in the match is on purpose, depending on
+your `git` version you could have a simple `(no branch)` or the far more helpful
+`(no branch, rebasing <branch>)` branch name.
+
+I’d be interested to know if other users have a better way to handle this.
+
+-- James
