@@ -1,0 +1,16 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 6"""
+ date="2020-01-21T19:23:41Z"
+ content="""
+dnf2 sinks etckeeper's stdout and stderr to /dev/null
+
+`etckeeper pre-install`, when `AVOID_COMMIT_BEFORE_INSTALL` is set,
+outputs an error to stderr, and exits nonzero. The expectation is
+that the package installation is canceled. (I don't know if that happens
+with etckeeper-dnf; it kind of looks like it warns and continues?)
+
+If etckeeper pre-install exiting nonzero does prevent the upgrade from
+happening, and the message about it goes to /dev/null, that seems like a
+surprising situation for the user to be confronted with.
+"""]]
