@@ -1,0 +1,21 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-01-21T19:00:14Z"
+ content="""
+I'm not thrilled by this idea. It's not uncommon for etckeeper.conf to be
+packaged by a distribution. Upgrading the package may replace the
+local etckeeper.conf (takes only answering "Y" on debian). If that changes
+out the VCS setting, then etckeeper suddently stops using the repository it
+was using.
+
+The README documents how to change the VCS that etckeeper uses. So I think
+it would be better to document that VCS setting in etckeeper.conf only
+applies to `etckeeper init`. Or alternatively, to add a parameter like
+`etckeeper init --vcs=git`.
+
+It's true that neither of those options would cater to a system that has
+two different version control repositories checked out in /etc at the same
+time, but that sounds like a sufficiently strange/bad idea that I see no
+reason to cater to it.
+"""]]
