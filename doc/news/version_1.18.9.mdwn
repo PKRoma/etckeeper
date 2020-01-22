@@ -1,5 +1,0 @@
-etckeeper 1.18.9 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * When run during a package installation, include in the commit
-     message the command line that caused etckeeper to run.
-     Thanks, Laszlo Gombos"""]]
