@@ -71,7 +71,7 @@ elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then
 	exit 0
 elif [ "x$1" = "x-v" ] || [ "x$1" = "x--version" ]; then
 	# This is automatically updated by the Makefile.
-	echo "Version: 1.18.13"
+	echo "Version: 1.18.14"
 	exit 0
 fi
 command="$1"

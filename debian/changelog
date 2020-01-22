@@ -1,9 +1,11 @@
-etckeeper (1.18.14) UNRELEASED; urgency=medium
+etckeeper (1.18.14) unstable; urgency=medium
 
   * pacman 5.2 deprecated File hooks, use Path.
     Thanks, Christian Hesse
+  * Fix vcs subcommand setup for zsh completion.
+    Thanks, James Rowe.
 
- -- Joey Hess <id@joeyh.name>  Mon, 20 Jan 2020 18:33:10 -0400
+ -- Joey Hess <id@joeyh.name>  Wed, 22 Jan 2020 09:59:04 -0400
 
 etckeeper (1.18.13) unstable; urgency=medium
 
