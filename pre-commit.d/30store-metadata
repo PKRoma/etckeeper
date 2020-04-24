@@ -86,7 +86,7 @@ generate_metadata() {
 }
 
 maybe_chmod_chown() {
-	if [ "$(which perl 2>/dev/null)" != "" ]; then
+	if command -v perl >/dev/null; then
 		perl -ne '
 			BEGIN { $q=chr(39) }
 			sub uidname {

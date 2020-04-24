@@ -2,7 +2,7 @@
 set -e
 
 # check whether we can locate the vcs binary
-if [ -n "$VCS" ] && which "$VCS" > /dev/null; then
+if [ -n "$VCS" ] && command -v "$VCS" > /dev/null; then
         # pass commands to the VCS application
         $VCS "$@"
 else

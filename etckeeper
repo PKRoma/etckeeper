@@ -125,7 +125,7 @@ if [ -z "$VCS" ]; then
 fi
 export VCS
 
-if [ "$(which perl 2>/dev/null)" != "" ]; then
+if command -v perl >/dev/null; then
 	lsscripts() {
 		LANG=C perl -e '
 			$dir=shift;
