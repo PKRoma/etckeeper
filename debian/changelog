@@ -1,3 +1,11 @@
+etckeeper (1.18.15) UNRELEASED; urgency=medium
+
+  * Use "command -v" rather than "which" to detect installed programs,
+    as it is more portable.
+    Thanks, Eli Schwartz.
+
+ -- Joey Hess <id@joeyh.name>  Fri, 24 Apr 2020 13:05:59 -0400
+
 etckeeper (1.18.14) unstable; urgency=medium
 
   * pacman 5.2 deprecated File hooks, use Path.

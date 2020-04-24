@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-04-24T16:43:02Z"
+ content="""
+The way this was presented left me at sea about the rationalle for the change.
+I had to read the commit message (which was excellent) to understand.
+
+Surprising to me that posh is apparently out of date on standards, and I
+could not find a bug report on it to get it updated either. However, 
+I was quickly able to find command -v use in scripts on a debian system, so
+anyone using posh as their system shell is already experiencing other breakage.
+So no worries on that front. Applying as-is.
+"""]]
