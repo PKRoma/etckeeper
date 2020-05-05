@@ -14,6 +14,43 @@ if ! [ -z "${ETCKEEPER_PID}" ]; then
 	ETCKEEPER_PARENT_COMMAND_LINE=$( ps --no-headers -o args "${ETCKEEPER_PPID}" )
 fi
 
+get_changes () {
+	if [ "$VCS" = git ]; then
+		git diff --stat | grep '|' | cut -d'|' -f1 | cut -b2-
+		git ls-files --exclude-standard --others
+	fi
+	if [ "$VCS" = hg ]; then
+		hg status --no-status
+	fi
+	if [ "$VCS" = bzr ]; then
+		bzr status -S | cut -b5-
+	fi
+	if [ "$VCS" = darcs ]; then
+		# ignore ' file -> file' lines for moved files
+		# trim ' -M +N rP' from change summary
+		darcs whatsnew --summary | grep -v '^ .* -> ' | cut -d' ' -f2- | sed 's/ [-+r][0-9]\+//g;s/^\.\///'
+		# lines beginning with 'a' show unversioned files
+		darcs whatsnew --look-for-adds --boring --summary | grep '^a' | cut -d' ' -f2- | sed 's/^\.\///'
+	fi
+}
+
+get_changed_packages () {
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
+		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' dpkg 2>/dev/null -S | cut -d':' -f1 | sed 's/, /\n/g'
+	fi
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
+		# if output contains file path, file was not found
+		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' rpm --qf '%{NAME}\n' -qf | grep -v "/etc/"
+	fi
+	# is it even possible to use pacmatic without pacman?
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = pacman -o "$LOWLEVEL_PACKAGE_MANAGER" = pacmatic ]; then
+		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' pacman 2>/dev/null -Qo | rev | cut -d' ' -f1-2 | rev | cut -d' ' -f1
+	fi
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = pkgng ]; then
+		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' pkg which --quiet | rev | cut -d'-' -f2- | rev
+	fi
+}
+
 if etckeeper unclean; then
 	if [ -z "${ETCKEEPER_PARENT_COMMAND_LINE}" ]; then
 		message="committing changes in /etc after $HIGHLEVEL_PACKAGE_MANAGER run"
@@ -26,6 +63,16 @@ if etckeeper unclean; then
 		(
 			echo "$message"
 			echo
+			get_changed_packages | sort | uniq > $pl.found-pkgs
+			if [ -s $pl.found-pkgs ]; then
+				sed -i 's/^/^[-+]/;s/$/ /' $pl.found-pkgs
+				etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' | grep -f $pl.found-pkgs > $pl.found-packages
+				if [ -s $pl.found-packages ]; then
+					echo "Packages with configuration changes:"
+					cat $pl.found-packages || true
+					echo
+				fi
+			fi
 			echo "Package changes:"
 			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' || true
 		) | etckeeper commit --stdin
@@ -41,3 +88,4 @@ if etckeeper unclean; then
 fi
 
 rm -f $pl.pre-install $pl.fmt
+rm -f $pl.found-pkgs $pl.found-packages
