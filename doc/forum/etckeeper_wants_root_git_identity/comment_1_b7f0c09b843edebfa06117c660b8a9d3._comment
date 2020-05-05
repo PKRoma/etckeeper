@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-05-05T18:36:14Z"
+ content="""
+I don't know. The code that does it is in /etc/etckeeper/commit.d/50vcs-commit 
+
+AFAICS, unless sudo does not set `SUDO_USER` (which it usually does) 
+or "whoami" does not output a username, that code *always* sets
+`GIT_AUTHOR_NAME` etc, which avoid git failing in that way.
+"""]]
