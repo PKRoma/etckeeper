@@ -2,3 +2,5 @@ Hi
 
 You should add so it runs "git gc" automatic.
 I know I can add it manually but better if its included
+
+> [[done]] --[[Joey]]

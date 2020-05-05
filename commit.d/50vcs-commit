@@ -91,10 +91,18 @@ if [ "$VCS" = git ] && [ -d .git ]; then
 			export GIT_COMMITTER_EMAIL
 		fi
 	fi
+
+	# gc ten times more frequently than the default
+	# (unless some other config is set)
+	GIT_GC_OPTIONS=
+	if ! git config gc.auto >/dev/null; then
+		GIT_GC_OPTIONS="-c gc.auto=670"
+	fi
+
 	if [ -n "$logfile" ]; then
-		git commit $GIT_COMMIT_OPTIONS -F "$logfile"
+		git $GIT_GC_OPTIONS commit $GIT_COMMIT_OPTIONS -F "$logfile"
 	else
-		git commit $GIT_COMMIT_OPTIONS
+		git $GIT_GC_OPTIONS commit $GIT_COMMIT_OPTIONS
 	fi
 elif [ "$VCS" = hg ] && [ -d .hg ]; then
 	if [ -n "$USER" ]; then
