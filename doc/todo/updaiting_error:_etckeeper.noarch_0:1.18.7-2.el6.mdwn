@@ -8,3 +8,5 @@ Error: Package: etckeeper-1.18.7-2.el6.noarch (epel)
 
 
 OS version: CentOS release 6.9 (Final)
+
+> [[notabug|done]] --[[Joey]]
