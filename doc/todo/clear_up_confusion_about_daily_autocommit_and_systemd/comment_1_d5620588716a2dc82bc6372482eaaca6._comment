@@ -1,0 +1,46 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-05-05T18:46:14Z"
+ content="""
+Well, this seems like quite a mess at first glance.
+
+The commit that added the timer claims that the timer is not enabled
+by default. If the timer is enabled by default, then everything that was
+done to intergrate it seems like it must rest on a faulty foundation.
+
+Afaik, systemd does not enable a unit just because the file is dropped into
+/lib/systemd; it has to be enabled. So what is enabling it?
+
+I checked a few systems, and they all had the timer enabled due to
+/etc/systemd/system/multi-user.target.wants/etckeeper.timer
+existing. git log seems to indicate the file got created before
+etckeeper's first commit to /etc. I do not know what creates it.
+
+It seems to me we need to understand the root cause of what is enabling
+that to fix it.
+
+The patch in 883263 adds some ugliness to the cron job to check if the
+timer is enabled. The patch 884824 in makes `AVOID_DAILY_AUTOCOMMITS`
+prevent the timer from committing. The way this is supposed to work is
+documented in etckeeper.conf:
+
+	# Etckeeper includes both a cron job and a systemd timer, which each
+	# can commit exiting changes to /etc automatically once per day.
+	# To enable the systemd timer, run: systemctl enable etckeeper.timer
+	# The cron job is enabled by default; to disable it, uncomment this next line.
+	#AVOID_DAILY_AUTOCOMMITS=1
+
+The second patch would make that documentation be incorrect because
+it would also start disabling the timer. The first
+patch should not be necessary if that documentation is followed, except
+for the problem that the timer is apparently being wrongly enabled by default.
+
+So I would rather understand and fix the root cause than patch over it in ways
+that add complexity and change the meaning of existing configurations.
+
+(Alternatively, could just remove the cron job, remove `AVOID_DAILY_AUTOCOMMITS`
+and let the timer be disabled if the user doesn't want it, but that
+would need some explicit, understood mechanism that enables the timer.
+Or could just remove the timer.)
+"""]]

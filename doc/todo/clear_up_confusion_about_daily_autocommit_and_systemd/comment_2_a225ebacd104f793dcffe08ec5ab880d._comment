@@ -1,0 +1,25 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2020-05-05T19:16:58Z"
+ content="""
+I tried, as an experiment, adding a copy of etckeeper.service and
+etckeeper.timer with a different name (netkeeper).
+
+They were not enabled after writing the files, or after a systemctl
+daemon-reload. I even tried rebooting, and they're still not enabled.
+
+Next experiment: I uninstalled etckeeper and deleted the symlink in /etc for
+its timer. systemd no longer had the timer enabled. I then reinstalled it
+with apt. systemd still didn't have the timer enabled, the symlink did not
+come back. (Even after rebooting.)
+
+So, I'd think that there is no bug at all, except I am seeing the timer be
+enabled by that symlink on multiple machines, including a machine that I'm
+positive I've deployed entirely from configuration management. And I'm
+pretty sure I never manually enabled it on any of the machines I see it
+enabled on.
+
+Maybe something used to cause the timer to get auto-enabled and no longer
+does?
+"""]]
