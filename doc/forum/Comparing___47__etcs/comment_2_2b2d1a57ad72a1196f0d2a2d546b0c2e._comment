@@ -1,0 +1,12 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2020-05-26T23:09:08Z"
+ content="""
+git diff does not care one bit if the branches are related or not.
+(git merge does care, but it can be overridden with
+--allow-unrelated-histories)
+
+It may be that gitea has some check in its UI to avoid diffing related
+braches for some reason.
+"""]]
