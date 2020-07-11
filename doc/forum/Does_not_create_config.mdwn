@@ -1,0 +1,1 @@
+I've just installed etckeeper however there is no /etc/etckeeper/etckeeper.conf file and no default config. i can't remove it with apt now either because it complains it needs a VCS set up in the config file.. which doesn't exist. how can i fix this? i need to be able to use apt to update, install and remove stuff.. i can't even use it because of this VCS thing
