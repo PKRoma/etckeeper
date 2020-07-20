@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2020-07-20T23:42:10Z"
+ content="""
+It would probably be helpful if you explained how you installed it, if you
+want help with that.
+
+The file is:
+
+* installed by "make install"
+* included in the debian package
+* included in the source repository as "etckeeper.conf"
+"""]]
