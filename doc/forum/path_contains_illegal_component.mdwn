@@ -11,3 +11,8 @@ I attempted to install a more recent version of hg from a ppa repository, but I 
 
 I eventually upgraded hg using pip install, and I now have 5.5.2 and that seems to have fixed the problem.
 
+I spoke too soon.
+
+For testing purposes, I moved cron.daily/etckeeper to cron.hourly.
+
+The error does not occur every hour, so there is some dependency on the path taken through the various etckeeper scripts.
