@@ -8,6 +8,8 @@ etckeeper (1.18.15) UNRELEASED; urgency=medium
     Thanks to emkael for the patch.
   * If gc.auto is not configured, override the default to make it gc
     ten times more frequently, to avoid wasting space with loose objects.
+  * update-ignore: Preserve permissions from any preexisting VCS ignore file.
+    Thanks, Austin Chu.
 
  -- Joey Hess <id@joeyh.name>  Fri, 24 Apr 2020 13:05:59 -0400
 
