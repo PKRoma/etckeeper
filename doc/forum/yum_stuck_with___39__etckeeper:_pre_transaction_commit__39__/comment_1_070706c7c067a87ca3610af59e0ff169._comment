@@ -1,0 +1,13 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-11-23T16:35:34Z"
+ content="""
+I suggest you talk to the distribution maintainers about the problem,
+since etckeeper is included in centos, this is certianly an integration bug
+there, and one they should be well suited to dealing with. Even if it ought
+to be eventually fixed in etckeeper itself.
+
+(Jimmy Tang wrote the yum integration, but it was so long ago that I doubt
+trying to get in touch with him would be useful.)
+"""]]
