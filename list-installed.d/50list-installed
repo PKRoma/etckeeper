@@ -7,6 +7,11 @@ if [ "$1" = fmt ]; then
 		echo ""
 	fi
 else
+	# Keep the sort order the same at all times.
+	LC_COLLATE=C
+	export LC_COLLATE
+	unset LC_ALL
+
 	# Output to stdout a *sorted* list of all currently installed 
 	# (or removed but still with config-files) packages, in the
 	# format "package version\n" (or something similar).

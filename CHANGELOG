@@ -1,3 +1,9 @@
+etckeeper (1.18.16) UNRELEASED; urgency=medium
+
+  * Improve sorting stability.
+
+ -- Joey Hess <id@joeyh.name>  Mon, 23 Nov 2020 13:37:05 -0400
+
 etckeeper (1.18.15) upstream; urgency=medium
 
   * Use "command -v" rather than "which" to detect installed programs,

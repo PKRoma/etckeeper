@@ -1,9 +1,10 @@
 #!/bin/sh
 set -e
 
-# Make sure sort always sorts in same order.
-LANG=C
-export LANG
+# Keep the sort order the same at all times.
+LC_COLLATE=C
+export LC_COLLATE
+unset LC_ALL
 
 filter_ignore() {
 	case "$VCS" in
@@ -55,11 +56,6 @@ generate_metadata() {
 	# -print or -exec, else the excluded directories will actually be
 	# printed!)
 	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
-
-	# Keep the sort order the same at all times.
-	LC_COLLATE=C
-	export LC_COLLATE
-	unset LC_ALL
 
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
