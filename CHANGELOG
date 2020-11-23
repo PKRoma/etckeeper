@@ -1,4 +1,4 @@
-etckeeper (1.18.15) UNRELEASED; urgency=medium
+etckeeper (1.18.15) upstream; urgency=medium
 
   * Use "command -v" rather than "which" to detect installed programs,
     as it is more portable.
@@ -10,8 +10,11 @@ etckeeper (1.18.15) UNRELEASED; urgency=medium
     ten times more frequently, to avoid wasting space with loose objects.
   * update-ignore: Preserve permissions from any preexisting VCS ignore file.
     Thanks, Austin Chu.
+  * Removed the debian directory from the upstream source package as it's
+    not being maintained; see the debian package for an up-to-date one.
+  * debian/changelog moved to CHANGELOG and debian/copyright to COPYRIGHT.
 
- -- Joey Hess <id@joeyh.name>  Fri, 24 Apr 2020 13:05:59 -0400
+ -- Joey Hess <id@joeyh.name>  Mon, 23 Nov 2020 12:19:15 -0400
 
 etckeeper (1.18.14) unstable; urgency=medium
 
