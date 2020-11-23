@@ -1,0 +1,16 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 3"""
+ date="2020-11-23T16:40:33Z"
+ content="""
+I think that, since I've removed the debian directory upstream,
+the only relevant thing would be adding the new etckeeper-brz
+and perhaps dropping etckeeper-bzr. And maybe something about changing the
+PYTHON value in Makefile, but since that also affects etckeeper-dnf,
+it would need to be checked that that at least builds too.
+
+If someone wants to submit that as a git branch, ok.. Untangling it
+from a debian patch that includes other changes, including ones that
+don't actually do anything (http://bugs.debian.org/975562) does not
+appeal to me myself.
+"""]]
