@@ -183,6 +183,11 @@ if [ -e "$file" ]; then
 		echo "etckeeper warning: can't find tempfile or mktemp" >&2
 	fi
 	file=$($tempfile)
+
+	# preserve permissions and ownership
+	cp -fp "$realfile" "$file"
+	cat /dev/null >"$file"
+
 	(
 		skipping=
 		while read -r line; do
