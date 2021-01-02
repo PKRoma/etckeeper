@@ -175,10 +175,10 @@ if [ -e "$file" ]; then
 		fi
 	fi
 	realfile="$file"
-	if command -v tempfile >/dev/null; then
-		tempfile="tempfile"
-	elif command -v mktemp >/dev/null; then
+	if command -v mktemp >/dev/null; then
 		tempfile="mktemp"
+	elif command -v tempfile >/dev/null; then
+		tempfile="tempfile"
 	else
 		echo "etckeeper warning: can't find tempfile or mktemp" >&2
 	fi

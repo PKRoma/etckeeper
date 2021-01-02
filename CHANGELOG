@@ -1,6 +1,9 @@
 etckeeper (1.18.16) UNRELEASED; urgency=medium
 
   * Improve sorting stability.
+  * Prefer mktemp over tempfile as the latter displays a deprecation
+    warning since debianutils 4.10.
+    Thanks, Luke Mlsna.
 
  -- Joey Hess <id@joeyh.name>  Mon, 23 Nov 2020 13:37:05 -0400
 
