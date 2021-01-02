@@ -84,11 +84,11 @@ endif
 	rm -rf $(TESTDIR)
 
 etckeeper.spec:
-	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;'<debian/changelog)/" etckeeper.spec
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;'<CHANGELOG)/" etckeeper.spec
 	rm -f etckeeper.spec~
 
 etckeeper.version:
-	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;' <debian/changelog)\"/" etckeeper
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;m/\((.*?)(-.*)?\)/;print $$1;' <CHANGELOG)\"/" etckeeper
 	rm -f etckeeper~
 
 .PHONY: etckeeper.spec etckeeper.version
