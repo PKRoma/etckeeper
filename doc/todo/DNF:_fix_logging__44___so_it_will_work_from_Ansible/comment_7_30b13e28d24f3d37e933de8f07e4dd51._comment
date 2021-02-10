@@ -1,0 +1,15 @@
+[[!comment format=mdwn
+ username="http://thm.id.fedoraproject.org/"
+ nickname="thm"
+ avatar="http://cdn.libravatar.org/avatar/f274b586047bb4a60d0332e647cd1bea"
+ subject="comment 7"
+ date="2021-02-10T16:09:35Z"
+ content="""
+In Fedora, we have that patch for a while now. However recently, someone [stumbled](https://bugzilla.redhat.com/show_bug.cgi?id=1917461) over the issue joey described in his last comment. Seems like there is indeed only a warning and dnf continues instead of cancelling package installation.
+
+The commit message of the [patch](https://github.com/sourcejedi/etckeeper/commit/8266a4fb) reads:
+
+> For the pre-transaction etckeeper run, this message replaces an exception. So we now avoid logging a traceback, which did not appear to add anything useful.  (In my testing, dnf was continued to install after the exception was logged).
+
+hence I suspect, some more investigation has to happen on how to actually cancel the transaction from within a dnf plugin/hook?
+"""]]
