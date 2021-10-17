@@ -129,6 +129,7 @@ writefile () {
 	ignore "*.LOCK"
 	ignore network/run
 	ignore adjtime
+	ignore udev/hwdb.bin
 	ignore lvm/cache
 	ignore lvm/archive
 	ignore "X11/xdm/authdir/authfiles/*"

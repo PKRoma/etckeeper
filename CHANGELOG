@@ -1,3 +1,9 @@
+etckeeper (1.18.17) UNRELEASED; urgency=medium
+
+  * Ignore udev's FHS violating large binary cache file /etc/udev/hwdb.bin
+
+ -- Joey Hess <id@joeyh.name>  Sun, 17 Oct 2021 09:45:48 -0400
+
 etckeeper (1.18.16) upstream; urgency=medium
 
   * Improve sorting stability.
