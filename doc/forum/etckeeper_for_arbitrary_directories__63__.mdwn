@@ -1,0 +1,11 @@
+I have some files outside of /etc I want to track (/usr/local/bin/*, /usr/lib/systemd/*, /boot/loader/entries/*). I suppose the `-d` option lets you use repos for arbitrary directories, but I would like to keep everything outside of $HOME in one repo as a opposed to a separate repo for /usr/local/bin, /usr/lib/systemd, etc. as they are all related system files.
+
+[This suggestion](https://serverfault.com/a/858674) suggests a `etckeeper init -d /` will work (and presumably ignore everything but those files in directories above, via gitignore) but when I do that, I run out of disk space (the resulting `/.git` repo is 7.9GB+ until my disk runs out of space. If I do a `git init /` instead, there's no issues. I suppose the issue is `etckeeper init` automatically adds all files to the index, resulting in the repo taking up a large amount of space that is proportional to `/`? 
+
+Is it possible to make `/` a repo ignoring all files except those in the directories above along with etc? Things like `.gitignore` and `showUntrackedFiles = no` cannot be applied when `etckeeper init -d /` cannot set up the repo due to lack of space. 
+
+P.S.
+
+A [workaround](https://serverfault.com/a/293081) is a hook that copies files outside of `/etc` into the `/etc` repo (presumably as a pre-commit hook?) so that they can be tracked. Another hook (assuming it's possible? It wasn't mentioned in that thread but something is needed. Otherwise, a wrapper script) would copy those files back to the appropriate location. This is satisfactory, but duplicate files involved is not ideal.
+
+Any suggestions is much appreciated. etckeeper seems appropriate for my uses because it looks to be a simple git wrapper that preserves metadata (ownership, permissions, etc.) and offers package management integration.
