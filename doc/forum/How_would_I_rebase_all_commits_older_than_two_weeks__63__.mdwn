@@ -6,6 +6,8 @@ Google hasn't explicitly said so, but there are hints that rebasing (followed by
 
 The `git log "@{two weeks ago}"^-` command shows the last commit made just before (or is it after?) that point in time, so that may be useful in the final solution. 
 
+Also, [[this post|Prevent_hook_running_during_rebase]] briefly describes the correct process for rebasing: `clone /etc repo, edit, and force pull the changes`
+
 So, in a nutshell: 
 
 * How can I squash all commits older than (say) two weeks into a single commit at the root of the /etc repo, leaving younger commits alone?
