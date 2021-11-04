@@ -1,0 +1,16 @@
+Hi;
+
+I'm implementing etckeeper for all of our servers, but I'm concerned about the "unlimited growth potential" of the /etc/.git repository.  (Note: I'm not a git expert by any means.)
+
+Google hasn't explicitly said so, but there are hints that rebasing (followed by garbage collection) will let me squash commits and keep the repository from filling up the root partition.
+
+The `git log "@{two weeks ago}"^-` command shows the last commit made just before (or is it after?) that point in time, so that may be useful in the final solution. 
+
+So, in a nutshell: 
+* How can I squash all commits older than (say) two weeks into a single commit at the root of the /etc repo, leaving younger commits alone?
+  - This should nuke all the copies of things that were deleted from /etc more than two weeks ago, yes?
+
+* If I wanted to emulate monthly, weekly and daily backups (with different retention periods) in the etckeeper repository, how could it be done?
+
+Thanks!
+
