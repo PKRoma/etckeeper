@@ -4,7 +4,7 @@ I'm implementing etckeeper for all of our servers, but I'm concerned about the "
 
 Google hasn't explicitly said so, but there are hints that rebasing (followed by garbage collection) will let me squash commits and keep the repository from filling up the root partition.
 
-The `git log "@{two weeks ago}"^-` command shows the last commit made just before (or is it after?) that point in time, so that may be useful in the final solution. 
+The command `git log --before 'two weeks ago' -1` shows the last commit made just before that point in time, so that may be useful in the final solution. 
 
 Also, [[this post|Prevent_hook_running_during_rebase]] briefly describes the correct process for rebasing: `clone /etc repo, edit, and force pull the changes`
 
