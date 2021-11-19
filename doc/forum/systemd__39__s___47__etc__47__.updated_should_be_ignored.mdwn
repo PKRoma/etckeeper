@@ -1,0 +1,5 @@
+systemd updates the /etc/.updated file with new timestamps frequently.
+
+This file should be ignored by etckeeper.
+
+Didn't find where to post bug reports except this forum.
