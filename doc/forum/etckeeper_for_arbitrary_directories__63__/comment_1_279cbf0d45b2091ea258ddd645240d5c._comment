@@ -1,0 +1,18 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2021-11-19T19:31:21Z"
+ content="""
+I choose not to grow etckeeper in this direction, because focus is
+important: etckeeper needs to be as good as possible at version controlling
+/etc, even if that means choices that don't make any sense for version
+controlling another directory.
+
+If you're going to version control a whole system, or some
+subset of it, you have a number of hard problems to solve.
+etckeeper solves probably none of them, except for the solution of "let's
+only version control /etc and so those other problems are not our problems".
+
+So it is not a useful starting point to do that, probably. If it somehow
+is a useful starting point to that, forking it would be appropriate.
+"""]]
