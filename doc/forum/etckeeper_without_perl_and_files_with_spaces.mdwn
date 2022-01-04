@@ -1,0 +1,9 @@
+Etckeeper fails to commit files with spaces in the non `Perl` implementation of `maybe_chmod_chown()`
+
+I have prepared a fix for this here:
+ https://gitlab.com/HRio/etckeeper/-/commits/fix-whitespace
+
+Joey can you have a look?
+
+Thanks,
+ Henrik
