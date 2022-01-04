@@ -124,7 +124,7 @@ maybe_chmod_chown() {
 		egid=$(id -g)
 		q="'"
 		while read x; do
-			stat=$(stat -c "%f:%u:%g:%a:%U:%G" $x)
+			stat=$(stat -c "%f:%u:%g:%a:%U:%G" "$x")
 			IFS=":" read mode uid gid perm uname gname <<EOF
 $stat
 EOF

@@ -92,6 +92,14 @@ check_root() {
 	[ $(grep -E -c "^${chgrp_str} '${group}' .*${testfile}'$" $metadata) -eq 1 ]
 }
 
+@test "test: etckeeper commit file with space" {
+	local testfile="a b c"
+	local mode="0705"
+	install -m $mode /dev/null $testdir/"$testfile"
+	run commit "commit 7"
+	[ $(grep -E -c "^${chmod_str} ${mode} .*${testfile}'$" $metadata) -eq 1 ]
+}
+
 @test "test: etckeeper debug (git)" {
 	skip
 	git --git-dir $testdir/.git log --oneline --stat
