@@ -1,0 +1,22 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2022-01-07T15:09:03Z"
+ content="""
+We can see why right in /usr/bin/etckeeper:
+
+	if [ -d ".git" ]; then
+	        VCS=git
+	elif [ -d ".hg" ]; then
+	        VCS=hg
+	elif [ -d "_darcs" ]; then
+	        VCS=darcs
+	elif [ -d ".bzr" ]; then
+	        VCS=bzr
+	fi
+
+So the VCS config is only used to control what `etckeeper init` does.
+
+See also this todo item about it, with more discussion:
+[[todo/doc/todo/Give_preference_to_etckeeper.conf_over_existing_repository_for_defining___36__VCS]]
+"""]]
