@@ -1,4 +1,4 @@
-etckeeper (1.18.17) UNRELEASED; urgency=medium
+etckeeper (1.18.17) upstream; urgency=medium
 
   * Fix committing of files with spaces in name when perl is not available.
     Thanks, Henrik Riomar
@@ -7,7 +7,7 @@ etckeeper (1.18.17) UNRELEASED; urgency=medium
     filenames in /etc that do not correspond to the current locale settings.
     Thanks, thm
 
- -- Joey Hess <id@joeyh.name>  Sun, 17 Oct 2021 09:45:48 -0400
+ -- Joey Hess <id@joeyh.name>  Fri, 07 Jan 2022 11:15:07 -0400
 
 etckeeper (1.18.16) upstream; urgency=medium
 
