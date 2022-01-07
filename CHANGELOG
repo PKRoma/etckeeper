@@ -1,5 +1,7 @@
 etckeeper (1.18.17) UNRELEASED; urgency=medium
 
+  * Fix committing of files with spaces in name when perl is not available.
+    Thanks, Henrik Riomar
   * Ignore udev's FHS violating large binary cache file /etc/udev/hwdb.bin
 
  -- Joey Hess <id@joeyh.name>  Sun, 17 Oct 2021 09:45:48 -0400
