@@ -16,13 +16,13 @@ filter_ignore() {
 		listfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
 		case "$VCS" in
 			darcs)
-				grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$listfile" || true
-				grep -Evf "$listfile"
+				LC_CTYPE=C grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$listfile" || true
+				LC_CTYPE=C grep -Evf "$listfile"
 				;;
 			git)
 				(git ls-files -oi --exclude-standard; git ls-files -oi --exclude-standard --directory) | sort | uniq > "$listfile" || true
 				if [ -s "$listfile" ]; then
-					sed 's/^\.\///' | grep -xFvf "$listfile"
+					sed 's/^\.\///' | LC_CTYPE=C grep -xFvf "$listfile"
 				else
 					cat -
 				fi

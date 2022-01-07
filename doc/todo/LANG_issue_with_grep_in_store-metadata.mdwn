@@ -8,3 +8,5 @@ grep: (Standardeingabe): Übereinstimmungen in Binärdatei
 
 coming from the `grep` in line 25. It can be fixed by either setting
 `LC_CTYPE=C` (maybe generally, in that file), or by adding `-a` to the `grep` call.
+
+> [[done]] --[[Joey]]
