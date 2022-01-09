@@ -1,0 +1,18 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2022-01-09T15:19:03Z"
+ content="""
+These files are unlikely to change without their originals changing too, so
+how is that unncessary churn? (And if they did change without the originals
+changing, that seems like the kind of event it might be useful to have a
+record of.)
+
+And the hash of the files is the same as the hash of a previous
+version of the original, so including them does not even use more disk
+space.
+
+Aside from gratuitous files that do not belong in /etc, etckeeper should
+accurately reflact the actual contents of the directory by default. To do
+otherwise risks being surprising.
+"""]]
