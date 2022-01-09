@@ -1,0 +1,10 @@
+The passwd, shadow and group files have backups that just create unnecessary churn on the repository, since they are already being tracked.
+
+Ignore:
+
+```
+/passwd-
+/shadow-
+/group-
+/gshadow-
+```
