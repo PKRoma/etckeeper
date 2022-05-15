@@ -66,7 +66,7 @@ if etckeeper unclean; then
 			get_changed_packages | sort | uniq > $pl.found-pkgs
 			if [ -s $pl.found-pkgs ]; then
 				sed -i 's/^/^[-+]/;s/$/ /' $pl.found-pkgs
-				etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' | grep -f $pl.found-pkgs > $pl.found-packages
+				etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | grep -E '^[-+]' | grep -f $pl.found-pkgs > $pl.found-packages
 				if [ -s $pl.found-packages ]; then
 					echo "Packages with configuration changes:"
 					cat $pl.found-packages || true
@@ -74,7 +74,7 @@ if etckeeper unclean; then
 				fi
 			fi
 			echo "Package changes:"
-			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | egrep '^[-+]' || true
+			etckeeper list-installed | diff -U0 $pl.pre-install - | tail -n+4 | grep -E '^[-+]' || true
 		) | etckeeper commit --stdin
 	else
 		etckeeper commit "$(printf "$message")"

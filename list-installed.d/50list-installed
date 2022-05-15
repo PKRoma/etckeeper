@@ -17,7 +17,7 @@ else
 	# format "package version\n" (or something similar).
 	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 		dpkg-query -W -f '${Status}\t${Package} ${Version} ${Architecture}\n' | \
-			egrep '(ok installed|ok config-files)' | cut -f2,3
+			grep -E '(ok installed|ok config-files)' | cut -f2,3
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
 		rpm -qa --qf "%|epoch?{%{epoch}}:{0}|:%{name}-%{version}-%{release}.%{arch}\n" | sort
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pacman ]; then
