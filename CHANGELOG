@@ -1,3 +1,10 @@
+etckeeper (1.18.18) UNRELEASED; urgency=medium
+
+  * Replace deprecated egrep with grep -E.
+    Thanks, Sam James
+
+ -- Joey Hess <id@joeyh.name>  Wed, 18 May 2022 12:50:08 -0400
+
 etckeeper (1.18.17) upstream; urgency=medium
 
   * Fix committing of files with spaces in name when perl is not available.
