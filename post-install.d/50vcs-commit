@@ -49,6 +49,9 @@ get_changed_packages () {
 	if [ "$LOWLEVEL_PACKAGE_MANAGER" = pkgng ]; then
 		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' pkg which --quiet | rev | cut -d'-' -f2- | rev
 	fi
+	if [ "$LOWLEVEL_PACKAGE_MANAGER" = xbps ]; then
+		get_changes | sed 's/^/\/etc\//;s/\s*$//' | xargs -d '\n' xbps-query -o | cut -d':' -f1
+	fi
 }
 
 if etckeeper unclean; then

@@ -103,6 +103,10 @@ writefile () {
 		comment "new versions of conffiles, stored by apk"
 		ignore "*.apk-new"
 		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "xbps" ]; then
+		comment "new versions of conffiles, stored by xbps"
+		ignore "*.new-*_[0-9]*"
+		nl
 	fi
 	
 	comment "old versions of files"

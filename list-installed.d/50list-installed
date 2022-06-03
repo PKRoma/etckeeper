@@ -28,5 +28,7 @@ else
 		pkg info -E "*"
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = apk ]; then
 		apk info -v | sort
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = xbps ]; then
+		xbps-query -l | awk '{print $2}' | sed -r 's/-([^-]+)$/ \1/g;'
 	fi
 fi
