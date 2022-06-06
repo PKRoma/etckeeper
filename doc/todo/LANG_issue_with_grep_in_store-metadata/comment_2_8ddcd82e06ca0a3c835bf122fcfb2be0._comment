@@ -1,0 +1,21 @@
+[[!comment format=mdwn
+ username="http://thm.id.fedoraproject.org/"
+ nickname="thm"
+ avatar="http://cdn.libravatar.org/avatar/f274b586047bb4a60d0332e647cd1bea"
+ subject="comment 2"
+ date="2022-01-02T16:38:37Z"
+ content="""
+> I guess the idea with setting LC_CTYPE=C is not to force this error message to English, which would not be useful, but because whatever the locale is set to is causing grep to interpret the input as binary.
+
+Exactly.
+
+> Except.. the C locale seems equally likely cause that as whatever locale they are using? Indeed the one user who mentioned their locale was using de_DE.utf8 so why would setting C help at all?
+
+Because, according to the `grep`'s man page: \"In the C or POSIX locale, all characters are encoded as a single byte and every byte is a valid character.\"
+
+> grep is complaining about its stdin, which comes from running a find in /etc, so there must be some particular file whose name causes grep to behave this way. Apparently one that, in a unicode locale, grep thinks is not unicode, but binary.
+
+While I don't know which files caused the issue for the reporters of the two bugs, I was able to reproduce the issue by running `touch  $'\xf6'` in `/etc`, creating a file named 'ö' in a latin-1 locale, but with an invalid name if interpreted as utf-8. (This can also be seen running `find /etc | iconv -f utf8 - -o /dev/null` which yields `iconv: illegal input sequence at position XY`.)
+
+
+"""]]

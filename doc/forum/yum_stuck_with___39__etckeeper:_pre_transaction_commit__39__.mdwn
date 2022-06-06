@@ -1,0 +1,31 @@
+Whenever I try to install something on CentOS (release 7.8.2003, installed via epel) etckeeper pre/auto commit ll get stuck mostly on pre commit. 
+I also got one server where post commit fails me, but on there one I can just abort the command. 
+
+```
+
+Transaction Summary
+===================================================================================================================================================================
+Upgrade  11 Packages
+
+Total size: 835 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+etckeeper: pre transaction commit
+^[[A^[[A^
+``` 
+
+
+```
+yum-3.4.3-167.el7.centos.noarch
+yum-utils-1.1.31-54.el7_8.noarch
+yum-plugin-fastestmirror-1.1.31-54.el7_8.noarch
+yum-metadata-parser-1.1.4-10.el7.x86_64
+etckeeper-1.18.14-1.el7.noarch
+git-1.8.3.1-23.el7_8.x86_64
+
+```
+
+For now, the workaround is to disable the yum-plugin with the config file /etc/yum/pluginconf.d/etckeeper.conf 

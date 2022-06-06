@@ -1,0 +1,15 @@
+# etckeeper pre-install hook for Pacman 5 and newer
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = etc/*
+
+[Action]
+Description = etckeeper: pre-transaction commit
+When = PreTransaction
+Exec = /usr/bin/etckeeper pre-install
+Depends = etckeeper
+AbortOnFail

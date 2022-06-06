@@ -1,0 +1,18 @@
+The following changes since commit c88551e939ed9349e7cc9be3e384749633b79655:
+
+  I am in awe of /etc/etckeeper/*.d/ (2019-03-18 14:36:14 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/sourcejedi/etckeeper.git 
+
+for you to fetch changes up to 040f5b2cb808ad9791d2c6f2f916fd887d2e16fa:
+
+  DNF: fix logging, now it will work from Ansible (2019-04-13 18:21:47 +0100)
+
+----------------------------------------------------------------
+Alan Jenkins (1):
+      DNF: fix logging, now it will work from Ansible
+
+ etckeeper-dnf/etckeeper.py | 48 ++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 42 insertions(+), 6 deletions(-)

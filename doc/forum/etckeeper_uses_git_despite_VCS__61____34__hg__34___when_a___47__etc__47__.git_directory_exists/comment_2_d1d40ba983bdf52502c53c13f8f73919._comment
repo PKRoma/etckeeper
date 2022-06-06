@@ -1,0 +1,15 @@
+[[!comment format=mdwn
+ username="Abdull"
+ avatar="http://cdn.libravatar.org/avatar/739dfa7b7b4580406c6e45fc8b3e3520"
+ subject="comment 2"
+ date="2022-01-11T11:56:28Z"
+ content="""
+Thank your for the info, I found your mentioned TODO at *[[todo/Give preference to etckeeper.conf over existing repository for defining $VCS]]*.
+
+I was able to accomplish my scenario (one personal git repository with <del>cherry-picked</del> selected configuration files in one repository AND using etckeeper as well) with the following workaround setup:
+
+* Set up my personal git repository at the root filesystem location `/`.
+* Configure etckeeper to use mercurial/hg.
+
+I noticed that (at least in Debian 11.2 bullseye) `apt install etckeeper` automatically runs `etckeeper init`, thereby setting up a **git**-based etckeeper according to the [default `etckeeper.conf` file](https://git.joeyh.name/index.cgi/etckeeper.git/tree/etckeeper.conf?h=debian&id=e2efb7797cfc0a6b366a9db01d37f685ccf04e22) - but I want **hg**. I looked around, but there doesn't currently seem to be a way (e.g. *debconf*) to configure etckeeper at *pre-installation time* to use hg other than [having an appropriate `/etc/etckeeper/etckeeper.conf` file in place before running `apt install etckeeper`](https://git.joeyh.name/index.cgi/etckeeper.git/tree/debian/postinst?h=debian&id=e2efb7797cfc0a6b366a9db01d37f685ccf04e22#n80). Or is there? Thanks for your help!
+"""]]

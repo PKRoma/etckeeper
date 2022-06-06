@@ -1,0 +1,22 @@
+I am trying to make etckeeper track `/etc` and another folder in `/`.
+
+However the script `20-warn-problem-files` reports many errors like
+
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fd/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+    find: `./proc/7010/task/7010/fdinfo/5': No such file or directory
+
+Due to files in `/proc` being created and deleted while `find` is running.
+
+
+I am not sure why `find` needs to run at all, when instead one could analyze the output of git ls-files and see if any of those files are problematic.
+
+> Using etckeeper to track all of `/` is not a supported use case.
+> You're free to try to use etckeeper that way, but when it breaks, you get
+> to modify it to work yourself, and it seems unlikely that the resulting
+> patches would be suitable to be applied to etckeeper. 
+>
+> So [[wontfix|done]], sorry. --[[Joey]]

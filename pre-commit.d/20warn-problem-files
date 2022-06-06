@@ -2,7 +2,7 @@
 set -e
 
 exclude_internal () {
-	egrep -v '(^|/)(.git|.hg|.bzr|_darcs)/'
+	grep -E -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
 }
 
 if [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
@@ -12,8 +12,8 @@ elif [ "$VCS" = hg ]; then
 	special=$(find . ! -type d ! -type f ! -type l | exclude_internal) || true
 	hardlinks=$(find . -type f ! -links 1 -exec hg status {} \; | exclude_internal ) || true
 elif [ "$VCS" = git ]; then
-	special=$(find . ! -type d ! -type f ! -type l -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
-	hardlinks=$(find . -type f ! -links 1 -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
+	special=$(find . ! -type d ! -type f ! -type l -exec git ls-files --exclude-standard --cached --others {} + | exclude_internal) || true
+	hardlinks=$(find . -type f ! -links 1 -exec git ls-files --exclude-standard --cached --others {} + | exclude_internal) || true
 else
 	special=""
 fi

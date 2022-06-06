@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="sourcejedi"
+ avatar="http://cdn.libravatar.org/avatar/599d943d715a521e4c23ab2a46ac70dc"
+ subject="Oops. Revised version"
+ date="2019-04-19T14:38:57Z"
+ content="""
+Please find a revised commit in the dnf branch of https://github.com/sourcejedi/etckeeper.git
+
+commit id: afbdce2d24b46bc91840044b953aca8b68f20fd3
+
+(The previous commit was not as safe as I thought.
+
+If the etckeeper output includes an un-decodable byte, we would convert it to a unicode string which contains U+FFFD.  This codepoint is *not* available in all character encodings, so it can cause UnicodeEncodeError.  It's not fatal in current versions of dnf, because they set logging.RaiseExceptions = false.  However it could lose an entire line of output.)
+"""]]

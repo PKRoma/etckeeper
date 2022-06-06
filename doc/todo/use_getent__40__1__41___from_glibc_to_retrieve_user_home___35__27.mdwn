@@ -1,0 +1,14 @@
+use getent(1) from glibc to retrieve user home #27
+
+https://github.com/joeyh/etckeeper/pull/27
+
+url for git am:
+https://patch-diff.githubusercontent.com/raw/joeyh/etckeeper/pull/27.patch
+
+> I had to guess at the motivation for this patch, which is never the best
+> position for a patch to leave its receiver in.
+> 
+> I guess that getent is a little faster than running perl to do the same
+> thing. And, getent seems to always be available, at least on debian.
+> 
+> So, applied, with some doubt. [[done]] --[[Joey]] 

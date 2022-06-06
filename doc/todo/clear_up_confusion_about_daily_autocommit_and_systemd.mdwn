@@ -1,0 +1,10 @@
+there are two bugs in the Debian BTS that should probably be upstreamed here. I'm bundling them together because they are related, but it's true they are two distinct issues.
+
+ * [Please don't start both cron job and systemd.timer](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=883263)
+ * [daily autocommit is run even though AVOID_DAILY_AUTOCOMMITS=1](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=884824)
+
+I bundle them because they somewhat depend on each other. Could you review those patches and see if they are appropriate?
+
+They at least look good to me and I'm considering inclusion in the next upload...
+
+Let me know! -- [[anarcat]], your faithful debian packager...

@@ -1,0 +1,5 @@
+It's impossible to know file modification time using git.
+etckeeper also saves some metadata, but not mtimes.
+
+Per-file mtimes are very useful to determine later when exactly change was happened.
+As of now, only date could be known, knowing there is `daily autocommit`, but time information is lost. Date is very imprecise, because there can be many changes per day.

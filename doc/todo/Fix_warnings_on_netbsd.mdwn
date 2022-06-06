@@ -1,0 +1,47 @@
+I use etckeeper from [pkgsrc](http://pkgsrc.se/sysutils/etckeeper) on NetBSD with a nightly cron job, and it generates warnings each night:
+
+~~~
+dnsdomainname: not found
+find: -not: unknown option
+find: -not: unknown option
+[master e4e5623] Daily autocommit
+ 5 files changed, 90 deletions(-)
+...and so on...
+~~~
+
+I've traced the issue to not-quite-POSIX args to `find` in `pre-commit.d/20warn-problem-files`, made a patch, and Amitai (schmonz) has applied the patch to the pkgsrc version. I thought you might want to include it at the source:
+
+~~~
+diff --git a/etckeeper/pre-commit.d/20warn-problem-files b/etckeeper/pre-commit.d/20warn-problem-files
+index f7c7580..f28d5ac 100755
+--- a/etckeeper/pre-commit.d/20warn-problem-files
++++ b/etckeeper/pre-commit.d/20warn-problem-files
+@@ -6,14 +6,14 @@ exclude_internal () {
+ }
+ 
+ if [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then
+-       special=$(find . -not -type d -not -type f -not -type l | exclude_internal) || true
+-       hardlinks=$(find . -type f -not -links 1 | exclude_internal ) || true
++       special=$(find . ! -type d ! -type f ! -type l | exclude_internal) || true
++       hardlinks=$(find . -type f ! -links 1 | exclude_internal ) || true
+ elif [ "$VCS" = hg ]; then
+-       special=$(find . -not -type d -not -type f -not -type l | exclude_internal) || true
+-       hardlinks=$(find . -type f -not -links 1 -exec hg status {} \; | exclude_internal ) || true
++       special=$(find . ! -type d ! -type f ! -type l | exclude_internal) || true
++       hardlinks=$(find . -type f ! -links 1 -exec hg status {} \; | exclude_internal ) || true
+ elif [ "$VCS" = git ]; then
+-       special=$(find . -not -type d -not -type f -not -type l -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
+-       hardlinks=$(find . -type f -not -links 1 -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
++       special=$(find . ! -type d ! -type f ! -type l -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
++       hardlinks=$(find . -type f ! -links 1 -exec git ls-files --exclude-standard --cached --others {} \; | exclude_internal) || true
+ else
+        special=""
+ fi
+~~~
+
+Thanks!
+
+> This change was already made to etckeeper back in 2014, there
+> is no "-not" in the etckeeper source code anywhere now.
+> I wonder why netbsd is apparently using such an out of date etckeeper.
+> Anyway, [[done]] --[[Joey]]

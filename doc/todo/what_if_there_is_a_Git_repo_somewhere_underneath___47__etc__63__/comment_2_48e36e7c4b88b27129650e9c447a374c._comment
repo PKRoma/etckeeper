@@ -1,0 +1,13 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2020-05-05T20:38:57Z"
+ content="""
+Gave this a try, and the nested repo gets commited as a submodule, which
+makes a certain amount of sense. But /etc/.etckeeper includes directories
+and files inside the rested repo, including even in its .git/ directory.
+
+The way pre-commit.d/30store-metadata finds files, and empty
+subdirectories, would need to be changed to take nested git repos into
+account. I don't immediately see a good way.
+"""]]

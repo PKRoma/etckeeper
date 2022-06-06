@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2016-02-15T17:09:15Z"
+ content="""
+user.email and user.name are set by etckeeper to sane fallback defaults.
+ubuntu has a seriously ancient version of etckeeper, which predates that.
+
+I've added a default for HOME.
+"""]]

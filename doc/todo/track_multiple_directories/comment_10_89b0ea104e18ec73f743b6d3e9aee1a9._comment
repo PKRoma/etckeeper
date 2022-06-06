@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="voltagex@69f6e3462800a695a8565ddc064de13207caf99f"
+ nickname="voltagex"
+ subject="This is needed for FreeBSD"
+ date="2016-03-20T04:43:30Z"
+ content="""
+FreeBSD splits configuration across /etc and /usr/local/etc
+"""]]

@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="https://marcussundberg.com/openid/"
+ avatar="http://cdn.libravatar.org/avatar/12ed25dc622fa3b47194a892662e9131c7e70a4d65d9453cba062f2c6487c9d5"
+ subject="In that case git has a crazy notion about &quot;needed&quot;..."
+ date="2016-11-19T13:55:35Z"
+ content="""
+Running gc in one of my etckeeper repos shrunk the .git directory from 500+ MiB to ~45 MiB.
+"""]]

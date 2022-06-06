@@ -1,0 +1,12 @@
+[[!comment format=mdwn
+ username="emkael"
+ avatar="http://cdn.libravatar.org/avatar/c2b5d5c4ae4866f14e2f42274f3ebc2d"
+ subject="comment 2"
+ date="2016-10-18T17:28:56Z"
+ content="""
+The per-file lookup was just a way to catch non-package files without too much hassle with splitting piped output.  
+Since that section is dropped, the updated patch provides lookup on one run of dpkg -S (and similar, for all package managers), plus some cleanup of the sort/uniq \"post-processing\".  
+The only thing I'm worried about is argument length limit - from what I was able to see, dpkg -S does not read arguments from stdin, so I'm just storing the file list in a variable. Is that much of a risk?
+
+Just updated the previous gist: <https://gist.github.com/emkael/364f701a5342978e6e79c2368b905565>
+"""]]

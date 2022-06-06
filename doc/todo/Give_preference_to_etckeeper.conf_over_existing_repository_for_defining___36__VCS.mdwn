@@ -1,0 +1,41 @@
+I'm using etckeeper with hg and I will use git to manage some files under /etc apart from etckeeper for some reason.
+
+However, after I initialize new git repository as /etc/.git, etckeeper starts to use git as $VCS contrary to definition in etckeeper.conf. So I think that definition in etckeeper.conf should be given priority over existing repository.
+
+The patch is below (from https://github.com/hiraku/etckeeper/commit/02f6d37e50cacddc9605dcbc5c8844b3f4658d6e ):
+
+```diff
+diff --git a/etckeeper b/etckeeper
+index 93f2b00..6c63ffb 100755
+--- a/etckeeper
++++ b/etckeeper
+@@ -109,14 +109,16 @@ fi
+ cd "$ETCKEEPER_DIR"
+ export ETCKEEPER_DIR
+ 
+-if [ -d ".git" ]; then
+-       VCS=git
+-elif [ -d ".hg" ]; then
+-       VCS=hg
+-elif [ -d "_darcs" ]; then
+-       VCS=darcs
+-elif [ -d ".bzr" ]; then
+-       VCS=bzr
++if [ -z "$VCS" ]; then
++       if [ -d ".git" ]; then
++               VCS=git
++       elif [ -d ".hg" ]; then
++               VCS=hg
++       elif [ -d "_darcs" ]; then
++               VCS=darcs
++       elif [ -d ".bzr" ]; then
++               VCS=bzr
++       fi
+ fi
+ 
+ if [ -z "$VCS" ]; then
+```
+
+I would appreciate your consideration.
+
+Thank you.

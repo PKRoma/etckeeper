@@ -1,0 +1,18 @@
+[[!comment format=mdwn
+ username="abozhenko@10aed7e09adef30729c54d5f74e1d94bc22dc6e2"
+ nickname="abozhenko"
+ subject="Track multiple dirs for all commands"
+ date="2015-11-22T04:03:37Z"
+ content="""
+Hello. 
+Please take a look:
+https://github.com/joeyh/etckeeper/pull/30
+
+I tried to add support for multiple dirs for all commands, and leave it compatible with default old config and cli.
+
+This feature may be useful when you want to have more control on your system. There are other locations which do contain config/code that may be changed, and affects system, e.g.: 
+python code at /usr/lib/python2.7/dist-packages/
+pacemaker scripts at /usr/lib/ocf/resource.d/fuel
+libvirt vms xmls at /var/lib/nova/instances/*/*.xml
+...
+"""]]

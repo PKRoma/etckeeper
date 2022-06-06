@@ -21,10 +21,10 @@ if ! grep -q "$managed_by_etckeeper" "$file"; then
 	exit 0
 else
 	realfile="$file"
-	if which tempfile >/dev/null 2>&1 || type tempfile >/dev/null 2>&1; then
-		tempfile="tempfile"
-	elif which mktemp >/dev/null 2>&1 || type mktemp >/dev/null 2>&1; then
+	if command -v mktemp >/dev/null; then
 		tempfile="mktemp"
+	elif command -v tempfile >/dev/null; then
+		tempfile="tempfile"
 	else
 		echo "etckeeper warning: can't find tempfile or mktemp" >&2
 		exit 1

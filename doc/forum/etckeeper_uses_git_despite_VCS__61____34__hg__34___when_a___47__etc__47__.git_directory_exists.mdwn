@@ -1,0 +1,19 @@
+#Setup
+etckeeper version:
+
+* `etckeeper/stable,stable,now 1.18.16-1 all [residual-config]`
+
+Environment:
+
+* `Linux Debian-1101-bullseye-amd64-base 5.10.0-9-amd64`
+
+Installed via `apt install etckeeper` on _Debian 11 Bullseye_, so using Debian's [https://packages.debian.org/bullseye/etckeeper](https://packages.debian.org/bullseye/etckeeper).
+
+In case only downstream Debian is the culprit, sorry for reporting here and not downstream - but Debian's bugtracker is so awful to use ...
+
+# Issue
+Despite `/etc/etckeeper/etckeeper.conf` being configured with `VCS="hg"`, the moment a git directory `/etc/.git/` (and/or file `/etc/.gitignore`?) exists, _etckeeper_ will use git (and e.g. `.gitignore` instead of `.hgignore`). Maybe this issue is not limited to Mercurial/hg only, but affects any other VCS (mercurial, bazaar, or darcs) as well.
+
+
+# My scenario
+I noticed this issue as I wanted to set up _etckeeper_ with Mercurial while still being able to use my own git-managed `/etc` hierarchy in parallel: use _etckeeper_ to version/backup all `/etc` files and at the same time have an additional git repository for cherry-picked etc files: _etckeeper_ tracks all files including my custom `conf.d/` etc files and package-provided vanilla files; my additional git repository only tracks my custom `conf.d/` etc files. Unfortunately, [it's not possible to have two git repositories in the same directory (here `/etc`) due to a git repository's `.gitignore` location not being configurable](https://stackoverflow.com/a/17313342/923560), hence my unsuccessful workaround with _etckeeper_ to use hg/Mercurial.

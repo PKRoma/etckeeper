@@ -1,0 +1,7 @@
+Pacman 5 calls its hooks in alphabetical order. The hooks I added in my previous patch (see [[__91__Patch__93___Support_Pacman_5.x_hooks]])
+have no numerical prefix -- which is needed in order to ensure that Pacman calls the hooks as late as possible (i. e. after all other hooks).
+
+My patch remedies that minor issue by adding the proper numerical prefix to the filenames of the Pacman 5 hooks. It may be found here:
+<https://github.com/Tblue/etckeeper/commit/33b2d1edb9dac1ad04cf8ab100b8edff0b004dd1.patch>
+
+> [[done]] thanks --[[Joey]] 

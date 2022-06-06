@@ -1,0 +1,7 @@
+etckeeper fails to track symlinks to /dev/null, as created by `systemctl mask X`.
+
+This is because git refuses to track symlinks to files which lie outside the git repository.
+
+Supporting symlinks outside the repository is also required for /etc/alternatives.
+
+- Huh, I was 100% wrong. [[done]]. Some user error, I can't work out what though.

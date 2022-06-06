@@ -1,0 +1,28 @@
+```
+The following changes since commit 1b418610133e6de2b091ddf148df2846d535d5e8:
+
+  some issues with systemd and autocommit (2020-04-17 21:19:29 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/eli-schwartz/etckeeper 
+
+for you to fetch changes up to d3f820b12d6dad3f59790780fbfcee0f30e6b11a:
+
+  Use portable "command -v" to detect installed programs (2020-04-19 04:27:59 -0400)
+
+----------------------------------------------------------------
+Eli Schwartz (1):
+      Use portable "command -v" to detect installed programs
+
+ debian/postinst                 | 2 +-
+ etckeeper                       | 2 +-
+ init.d/10restore-metadata       | 2 +-
+ pre-commit.d/30store-metadata   | 2 +-
+ uninit.d/50vcs-uninit           | 4 ++--
+ update-ignore.d/01update-ignore | 4 ++--
+ vcs.d/50vcs-cmd                 | 2 +-
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+```
+
+> [[done]] --[[Joey]]

@@ -1,0 +1,25 @@
+[[!comment format=mdwn
+ username="sshaikh"
+ avatar="http://cdn.libravatar.org/avatar/e31e0ba78d2df04dc252e1bf87e8f378"
+ subject="comment 1"
+ date="2020-05-23T14:58:39Z"
+ content="""
+I think this does what I need:
+
+    #use a temp dir
+    mkdir /tmp/etc
+    cd /tmp/etc
+    git init
+    git remote add origin http://git.server/user/server_etc.git
+    touch init
+    git add .
+    git commit -m \"init\"
+    git push --set-upstream origin master
+    git fetch
+    git checkout host-one
+    git rebase master
+    #lots of merge errors due to master being empty repo
+    git add .
+    git rebase --continue
+    git push --force #as local is now \"ahead\" of remote.
+"""]]

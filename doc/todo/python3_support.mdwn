@@ -1,0 +1,7 @@
+etckeeper doesn't support python3 in its current form. in [bug 811180](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=811180), mattia provided a NMU that fixed this, but unfortunately I totally forgot to include it in the later uploads so it got destroyed.
+
+i have now remerged it in the debian branch, and you now have patches there to review to make etckeeper (or, more specifically, the bzr plugin) survive the Python 2 dead parrot stage.
+
+there's also another patch there to fix sort order with UTF-8 which I do not understand very well, but i hope you will find useful.
+
+thanks! -- [[anarcat]]

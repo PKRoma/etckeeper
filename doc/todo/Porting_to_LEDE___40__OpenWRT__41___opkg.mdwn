@@ -1,0 +1,5 @@
+Hello
+
+What we need to do (to code)
+for working etckeeper under LEDE/OpenWRT?
+

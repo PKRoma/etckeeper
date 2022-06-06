@@ -1,0 +1,6 @@
+etckeeper 1.18.14 released with [[!toggle text="these changes"]]
+[[!toggleable text="""
+   * pacman 5.2 deprecated File hooks, use Path.
+     Thanks, Christian Hesse
+   * Fix vcs subcommand setup for zsh completion.
+     Thanks, James Rowe."""]]

@@ -1,0 +1,10 @@
+While trying to add etckeeper to some other system today, I ran:
+
+    $ etckeeper help
+    etckeeper: /etc/etckeeper/help.d does not exist
+
+And now I'm wondering why I don't just make *all* of my big scripts call `run-parts` on the subcommands.
+
+# Why was I not informed sooner?
+
+Anyway thanks, Joey, I learned a cool new trick today!

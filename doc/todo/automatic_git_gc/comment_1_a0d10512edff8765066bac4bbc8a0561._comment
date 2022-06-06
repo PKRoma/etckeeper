@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="florian.kaiser@0f461a60da03d93431a5fdc965f53e6265e3f91e"
+ nickname="florian.kaiser"
+ subject="comment 1"
+ date="2016-03-08T13:32:03Z"
+ content="""
+Git does git gc automatically when needed.
+"""]]

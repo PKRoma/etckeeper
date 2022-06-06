@@ -1,0 +1,35 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 3"""
+ date="2020-05-05T20:07:40Z"
+ content="""
+10x pack improvement is not unusual when running git gc. Just gced my /etc
+from 32mb down to 3.9mb. But that does not tell me that git is not running
+gc often enough in /etc, necessarily.
+
+I think the question is, might the way etckeeper uses git happen to avoid
+the git commands that do auto gc?
+
+After all, the only command run in some etckeeper repos is git commit,
+and some git ls-files and similar query commands.
+
+One command I know triggers an auto gc is git fetch, which is never run.
+
+Looking at git's source code, git commit does seem to run gc --auto.
+Verified that with `GIT_TRACE=1 git commit`
+
+So, it seems to me that if git has not gc'ed a 500 mb repo, it must be
+because the default or system gc.auto config didn't make it want to, not
+that it didn't have the opportunity. If there are less than 6700 objects,
+it by default won't. Suppose there's a 100 kb config file that keeps
+getting modified and commited by etckeeper. 6000 versions of that file
+stored as loose objects would bloat the repo up to 585 mb (well, a bit
+less, git does compress the objects), and would not be enough objects to
+trigger gc.auto. Something like that seems plausible.
+
+What 100 kb config file, you ask? /etc/.etkeeper runs around that large!
+So do my dnssec zone files (which get auto-regenerated regularly).
+
+So, I think it would make sense for etckeeper to set gc.auto to a smaller
+number, say 670.
+"""]]

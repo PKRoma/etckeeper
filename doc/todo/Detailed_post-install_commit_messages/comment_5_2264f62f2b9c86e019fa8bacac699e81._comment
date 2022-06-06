@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="emkael"
+ avatar="http://cdn.libravatar.org/avatar/c2b5d5c4ae4866f14e2f42274f3ebc2d"
+ subject="comment 5"
+ date="2016-10-23T12:49:46Z"
+ content="""
+Yeah, `xargs` should do the trick. I've updated the patch or, if you prefer, pushed it to my local fork at: `http://emkael.info/cgit/etckeeper/`
+"""]]

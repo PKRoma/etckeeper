@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="nathanst"
+ avatar="http://cdn.libravatar.org/avatar/1844c7b9b45fdd9049494b4a09b26a49"
+ subject="Debian patches"
+ date="2020-05-13T22:54:12Z"
+ content="""
+I believe the patches referred to are found in this commit (pushed on the same date as this \"python3 support\" page was created):
+<https://git.joeyh.name/index.cgi/etckeeper.git/commit/?h=debian&id=b3f133c5d8cec6f586e021be45efffb3d570021d>
+"""]]

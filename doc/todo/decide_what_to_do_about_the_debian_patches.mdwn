@@ -1,0 +1,76 @@
+There is a number of patches in the Debian BTS that has been pending
+since before I took over maintainership of the package. I am wondering
+what to do with them - a bunch seem relevant and I could bundle them
+in `debian/patches` but I am not sure I want to carry such a "fork" of
+etckeeper forever, so I would prefer to approve them here first.
+
+On the other hand, I do not want to flood you with 8 feature requests
+you have already seen. So I figured I would open a single todo item to
+quickly allow you to review the [patch set](https://bugs.debian.org/cgi-bin/pkgreport.cgi?include=tags%3Apatch&exclude=tags%3Apending&pend-exc=done&repeatmerged=no&src=etckeeper):
+
+ * #519420 etckeeper: Add option to force commit after apt run.
+ 
+   Hack to force an empty commit to keep track of package changes.
+
+   Last change: Apr 2009. Marked "wontfix" in 2014.
+ 
+ * #549354 etckeeper: don't warn about ignored files
+ 
+   git-specific patch available, not sure how it behaves with other
+   VCSes. seems to have at least another user (fmarier)
+
+   Last change: Oct 2010.
+
+ * #576915 30store-metadata: use GNUisms to achieve 1s runtime.
+ 
+   concerns about portability to solaris, is this still an issue?
+   
+   Last change: Apr 2010.
+
+ * #592158 etckeeper: Example for tracking installed packages
+ 
+   sample post-install hook to keep track of installed packages in
+   /etc. similar to #519420 - close?
+   
+   Last change: Aug 2010
+
+ * #612029 etckeeper: Example hook for generating GPG-encrypted bundle
+   after every commit
+   
+   another sample post-install hook to secretely ship a git bundle to
+   a backup server
+   
+   Last change: Feb 2011
+
+ * #613278 etckeeper: writing a commit message for the autocommit that
+   happens after apt
+   
+   patch for git, with possible patch for bzr as well, requiring
+   proposed upstream change for bzr, not merged.
+   
+   last change: Sep 2013
+   
+ * #698062 logout hook
+ 
+   yet *another* sample hook, by yours truly, add a new "logout"
+   subcommand that can be added to bash_logout scripts.
+   
+   last change: Jan 2013
+
+ * #777612 etckeeper should read XDG_CONFIG_HOME/git/config
+ 
+   look in standard locations for the git config, seems sound
+   
+   last change: Feb 2015
+
+So to simplify, there are those groups of proposed changes:
+
+ * sample hooks (592158, 612029, 698062)
+ * bugfixes (549354, 777612)
+ * features and improvements (519420, 576915, 613278)
+
+So any opinion about what to do with those? Should I submit them as
+separate issues? Or should I ask the original reporters to do that
+here? Or should I just close those issues?
+
+Thanks! -- [[anarcat]]

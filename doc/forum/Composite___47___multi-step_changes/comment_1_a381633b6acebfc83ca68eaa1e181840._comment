@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2018-05-08T15:59:07Z"
+ content="""
+One way to accomplish this is to `git branch -f transaction master` at the
+start, and once all intermediate commits have been made (by etckeeper or by
+you), run `git reset transaction; etckeeper commit "transaction
+description"`.
+
+It's also sometimes handy to then generate a merge commit between the final
+transaction commit and the last intermediate commit; then you have both
+the transactions and all the intermediate steps accessible in git log; 
+the git history has a diamond shape.
+
+I'd be willing to consider patches along these lines..
+"""]]

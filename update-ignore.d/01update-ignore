@@ -93,11 +93,19 @@ writefile () {
 		comment "new and old versions of conffiles, stored by apt/rpm"
 		ignore "*.rpm*"
 		nl
-	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacman" ]; then
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "pacman-g2" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacman" -o "$LOWLEVEL_PACKAGE_MANAGER" = "pacmatic" ]; then
 		comment "new and old versions of conffiles, stored by pacman"
 		ignore "*.pacnew"
 		ignore "*.pacorig"
 		ignore "*.pacsave"
+		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "apk" ]; then
+		comment "new versions of conffiles, stored by apk"
+		ignore "*.apk-new"
+		nl
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "xbps" ]; then
+		comment "new versions of conffiles, stored by xbps"
+		ignore "*.new-*_[0-9]*"
 		nl
 	fi
 	
@@ -125,6 +133,7 @@ writefile () {
 	ignore "*.LOCK"
 	ignore network/run
 	ignore adjtime
+	ignore udev/hwdb.bin
 	ignore lvm/cache
 	ignore lvm/archive
 	ignore "X11/xdm/authdir/authfiles/*"
@@ -171,14 +180,19 @@ if [ -e "$file" ]; then
 		fi
 	fi
 	realfile="$file"
-	if which tempfile >/dev/null 2>&1 || type tempfile >/dev/null 2>&1; then
-		tempfile="tempfile"
-	elif which mktemp >/dev/null 2>&1 || type mktemp >/dev/null 2>&1; then
+	if command -v mktemp >/dev/null; then
 		tempfile="mktemp"
+	elif command -v tempfile >/dev/null; then
+		tempfile="tempfile"
 	else
 		echo "etckeeper warning: can't find tempfile or mktemp" >&2
 	fi
 	file=$($tempfile)
+
+	# preserve permissions and ownership
+	cp -fp "$realfile" "$file"
+	cat /dev/null >"$file"
+
 	(
 		skipping=
 		while read -r line; do

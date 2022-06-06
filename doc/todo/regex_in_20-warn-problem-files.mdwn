@@ -1,0 +1,11 @@
+    exclude_internal () {
+            grep -E -v '(^|/)(.git|.hg|.bzr|_darcs)/'
+    }
+
+should probably escape the `.`s. 
+
+    exclude_internal () {
+            grep -E -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
+    }
+
+> [[fixed|done]] --[[Joey]]

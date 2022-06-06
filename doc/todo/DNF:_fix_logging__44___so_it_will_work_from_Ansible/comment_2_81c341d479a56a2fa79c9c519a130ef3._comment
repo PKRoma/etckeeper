@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 2"""
+ date="2019-04-23T23:09:47Z"
+ content="""
+Given the difficulty in feeding etckeeper output through this, would it
+perhaps be better to do something else with its output in this case, either
+/dev/nulling it or writing it to the syslog or something like that?
+"""]]

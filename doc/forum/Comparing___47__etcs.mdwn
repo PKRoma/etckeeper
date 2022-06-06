@@ -1,0 +1,24 @@
+I have two hosts which have been set up identically, except for a few things like hostnames and the like. I also have a git server (gitea) separate from both. I set up etckeeper as per the following (running Debian):
+
+    apt install etckeeper
+    cd /etc/
+    git status
+    git diff
+    git commit -m "initial commit"
+    git gc
+    git remote add origin http://git.server/user/server_etc.git
+
+Since I have two hosts, I thought it would be useful/convenient to give each one a named branch in the same repo:
+
+    git branch -m host-one
+    git push --set-upstream origin host-one
+
+And same for host-two.
+
+In gitea I successfully can see the two branches (and there is no master). However git/gitea does not see them as related branches and so will not compare them. This makes sense to me as they were both new branches.
+
+How can I make them related branches, ideally without clobbering my hosts (I'd rather not pull anything on those)?
+
+I think I have to give each branch a common parent (maybe a blank master?), but I'm happy to make host-two a branch of host-one if that's easier.
+
+(I realise this isn't strictly a etckeeper question but I posted here in case it help others with a similar usecase).

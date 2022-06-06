@@ -17,8 +17,8 @@ understand the basics of working with version control.
 
 [[!sidebar content="""
 [[README]]  
-[[install]]  
-[[news]]  
-[[todo]]  
-[Flattr this](http://flattr.com/thing/39940/etckeeper)  
+[[Install]]  
+[[News]]  
+[[Todo]]  
+[[Forum]]  
 """]]

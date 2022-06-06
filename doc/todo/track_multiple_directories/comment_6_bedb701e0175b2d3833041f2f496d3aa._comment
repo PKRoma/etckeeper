@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="https://www.google.com/accounts/o8/id?id=AItOawnZJhzx-nwZRTgh9kjy2Q8zKYsgTLNM2zc"
+ nickname="Evan"
+ subject="intrusion detection?"
+ date="2015-04-10T20:32:40Z"
+ content="""
+It seems to me that this would be particularly useful for narrowly scoped intrusion detection.
+
+For example, if I have an installed instance of a popular web app (Wordpress, Django, what have you) that is compromised (SQL injection, brute force, etcetera), every part of that app may become suspect even after the initial vulnerability is patched...in which case, a versioned log of what files were changed within the app directory(s) would be *extremely* useful.
+"""]]

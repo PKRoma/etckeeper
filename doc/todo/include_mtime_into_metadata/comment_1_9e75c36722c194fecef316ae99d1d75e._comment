@@ -1,0 +1,25 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2016-09-27T13:31:57Z"
+ content="""
+Are there any config files in /etc whose mtime influences the program they
+configure in some way? That would be a very good reason to include the
+mtime.
+
+If the goal is to keep track of multiple manual changes to /etc, the best
+thing to do is to manually run etckeeper commit after making the change.
+Relying on the daily autocommit is at best a fallback.
+
+Need to consider the resource impact of adding mtimes to /etc/.etckeeper 
+would not be very bad. The files are already statted, so no extra overhead
+there. 
+
+How about the size increase of /etc/.etckeeper?
+For each file in /etc, a line like `maybe touch -d '1970-01-01 00:00Z' foo` would
+be needed. (That seems the most compact available way to specifiy a time to
+touch.) On my system, that adds 136kb to /etc/.etckeeper, a little bit more
+than doubling its size.
+
+That doesn't seem too bad a resource impact. 
+"""]]

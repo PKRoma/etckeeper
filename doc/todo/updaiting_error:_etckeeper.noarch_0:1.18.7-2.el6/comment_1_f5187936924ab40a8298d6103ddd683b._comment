@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2018-05-17T18:44:54Z"
+ content="""
+That is not an error message produced by etckeeper, you'll need to talk to
+whoever produced the rpm of etckeeper that you have installed.
+"""]]

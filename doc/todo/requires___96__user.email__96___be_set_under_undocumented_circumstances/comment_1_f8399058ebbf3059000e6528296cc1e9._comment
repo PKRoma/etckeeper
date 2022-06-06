@@ -1,0 +1,26 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2017-06-08T17:00:19Z"
+ content="""
+What actually requires user.email be set under
+undocumented circumstances? git does. Personally, I feel this is a total
+misfeature on git's part; git commit should succeed under all
+configuraations. Every single program that automates `git commit`
+is potentially buggy otherwise.
+
+Anyway, yes, setting `USER=$(id -un)` (or whoami) would make
+the code that currently is used to handle sudo users be always
+run, and so git and any other VCSs that break in unusual circumstances
+would always work (at least as far as username and email goes, who knows
+what other requirements VCSs may have).
+
+The downside is that this could change etckeeper's behavior, since
+it would now be guessing at the user name and email, and may make
+different choices than git does.
+
+Setting USER would also impact the code for other VCSs than git. For
+example, the code for hg always sets HGUSER when USER is set. I don't know
+if the others VCSs are as picky as git; if this kind of breakage is not a
+problem for them it might be best to only set USER when using git.
+"""]]

@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="david.allsopp@9d83c1f5c7dd7ff57a593f0ba01d604c4f00ebc1"
+ nickname="david.allsopp"
+ avatar="http://cdn.libravatar.org/avatar/efcf5b162c580a097386b7ff2d905ce8"
+ subject="comment 3"
+ date="2021-01-12T16:08:03Z"
+ content="""
+Couldn't core.sharedRepository (https://git-scm.com/docs/git-config#Documentation/git-config.txt-coresharedRepository) be sensibly used here to ensure that files are checked very restrictively (to be accessible only by root) and then relaxed by the updates in the githook?
+"""]]

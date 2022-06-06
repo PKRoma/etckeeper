@@ -1,0 +1,12 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2019-12-25T19:44:29Z"
+ content="""
+An admin might expect to be able to `mv passwd- passwd` to undo the most
+recent change, and if so that might as well be supported after restoring
+/etc from backup.
+
+There is essentially no overhead in adding these files since they have the
+same content as an older commit of the passwd file.
+"""]]

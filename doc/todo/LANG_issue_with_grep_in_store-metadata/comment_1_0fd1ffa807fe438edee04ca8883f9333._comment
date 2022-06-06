@@ -1,0 +1,25 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2021-12-31T15:37:27Z"
+ content="""
+Using grep -a would be fine, except people do use etckeeper on non-gnu systems
+and I worry about breaking portability.
+
+I guess the idea with setting `LC_CTYPE=C` is not to force this error
+message to English, which would not be useful, but because whatever the
+locale is set to is causing grep to interpret the input as binary. 
+
+Except.. the C locale seems equally likely cause that as whatever
+locale they are using? Indeed the one user who mentioned their locale
+was using `de_DE.utf8` so why would setting C help at all?
+
+grep is complaining about its stdin, which comes from running a find in
+/etc, so there must be some particular file whose name causes grep to
+behave this way. Apparently one that, in a unicode locale, grep thinks
+is not unicode, but binary.
+
+(Also, there was [[!commit 0dd5ff64bf4dba9a2e54c7f29c96998af5dcebce]]
+which also involved setting LANG=C when using grep, in similarly hard to
+understand circumstances.)
+"""]]

@@ -1,0 +1,9 @@
+Could we get in the README some info about how to restore from etckeeper assuming it's even possible. So say I hose my system. I reinstall everything.  But now I'd like to migrate my old config but keep tracking changes going forward. What I've tried:
+
+1) Renaming /etc breaks sudo
+2) clone over /etc breaks passwd
+3) clone to staging area and then move things over selectively
+
+Is #3 the proper way to restore an /etc
+
+Thanks

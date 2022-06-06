@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 4"""
+ date="2016-10-21T19:14:23Z"
+ content="""
+Good thought about argument length limit. Use xargs?
+
+There is a disturbing lack of quoting on `$FILELIST` which I think could be
+a problem with filenames containing spaces etc. Using xargs with `-d \n`
+should also avoid that problem.
+"""]]

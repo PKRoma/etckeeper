@@ -6,7 +6,7 @@ set -e
 # file won't do anything shady, because, as documented, etckeeper-init
 # should only be run on repositories you trust.
 if [ -e .metadata ]; then
-	if which metastore >/dev/null; then
+	if command -v metastore >/dev/null; then
 		metastore --apply --mtime
 	else
 		echo "etckeeper warning: legacy .metastore file is present but metastore is not installed" >&2

@@ -1,0 +1,20 @@
+OpenBSD find does not have `-printf` which is used in `/etc/etckeeper/commit.d/50vcs-commit` to figure out who is running the command:
+
+    # uname -a
+    OpenBSD myhost 6.9 GENERIC.MP#473 amd64
+    # etckeeper commit
+    find: -printf: unknown option
+
+I replaced `USER="$(find "$TTY" -printf "%u")"` with `USER=dunno` as this makes it work.
+
+OpenBSD has perl in its base so:
+
+    perl -MFile::stat -E "my \$st = stat(\"$TTY\"); say( (getpwuid(\$st->uid))[0] )";
+
+or
+
+    perl -MFile::stat -E "my \$st = stat(qq{$TTY}); say( (getpwuid(\$st->uid))[0] )";
+
+would work.
+
+-- cstamas

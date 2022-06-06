@@ -1,7 +1,0 @@
-etckeeper 1.17 released with [[!toggle text="these changes"]]
-[[!toggleable text="""
-   * Fix name of DNF plugin.
-   * Add --version
-     Thanks Andreas Wansner.
-   * New website, http://etckeeper.branchable.com/
-   * Add build-depends on dh-python."""]]

@@ -1,0 +1,7 @@
+In commit.d/50vcs-commit the word "committer" is misspelled twice (as "commiter"). Here it is in the code:
+
+https://github.com/joeyh/etckeeper/blob/master/commit.d/50vcs-commit#L58-L59
+
+This is causing git to incorrectly attribute commits to root instead of the name and email specified in ~/.gitconfig.
+
+> [[fixed|done]] --[[Joey]]

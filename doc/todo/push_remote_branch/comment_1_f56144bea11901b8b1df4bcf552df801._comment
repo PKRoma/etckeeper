@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="jim"
+ avatar="http://cdn.libravatar.org/avatar/b538cf412c3060bed47b86676cd7cba1"
+ subject="Agreed! Please implement pushing to branches!"
+ date="2017-01-31T23:56:51Z"
+ content="""
+Kind of a pain to constantly edit commit.d/99push to change the branch.
+An easy fix for a much needed feature.
+Please implement!
+"""]]

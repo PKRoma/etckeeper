@@ -1,0 +1,22 @@
+It turns out that my last patch ([[Patch:_Make_Pacman_5_call_etckeeper_hooks_as_late_as_possible]])
+was not perfect after all.
+
+Calling both the pre-transaction and the post-transaction hook as late as possible seemed to make
+sense at the time, but now that I think about it, I would say that only the post-transaction hook should be
+called after all other hooks; the **pre-transaction** hook should be called as **early** as possible.
+
+That way, the pre-transaction hook can make sure that...
+
+- ...everything in `/etc` gets committed before any other hook gets the chance to introduce more changes
+  (therefore making any changes made by other hooks part of the post-transaction commit) *and*...
+- ...it can abort the transaction and thus all hooks that come after the pre-transaction hook if `/etc`
+  is not clean and the user wants to prevent the package manager from running in that case. This prevents
+  any later hooks from making changes that should not be made in the first place (since the entire transaction
+  is being aborted due to a dirty `/etc`).
+
+My patch which makes Pacman call the pre-transaction hook as early as possible can be found here:
+<https://github.com/Tblue/etckeeper/commit/6ff4f922cd34689e0d61359ebd822af5f82c40a6.patch>
+
+Hopefully, this will be the last patch related to the Pacman hooks for some time... Sorry for the noise.
+
+> [[done]] --[[Joey]]

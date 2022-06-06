@@ -1,0 +1,32 @@
+[Ubuntu LaunchPad bug #1335391](https://bugs.launchpad.net/ubuntu/+source/etckeeper/+bug/1335391)
+(Quoting the LaunchPad bug below, but I have experienced this issue in an identical manner.)
+
+I have configured etckeeper to use git. It works fine if I use apt-get or synaptic packet manager.
+
+But when the update-manger install new packet versions it ends with an "installation failed" message. When I check the status of the git repository in the etc directory, some changes are not committed, e.g.:
+
+    On branch master
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+    
+      modified: apt/apt.conf.d/01autoremove-kernels
+      modified: init.d/resolvconf
+
+    ProblemType: Bug
+    DistroRelease: Ubuntu 14.04
+    Package: etckeeper 1.9ubuntu2
+    ProcVersionSignature: Ubuntu 3.13.0-29.53-generic 3.13.11.2
+    Uname: Linux 3.13.0-29-generic x86_64
+    NonfreeKernelModules: wl tbs6982fe tbs6680fe tbs6923fe tbs6985se tbs6928se tbs6982se tbs6991fe tbs6618fe tbs6922fe tbs6928fe tbs6991se
+    ApportVersion: 2.14.1-0ubuntu3.2
+    Architecture: amd64
+    CurrentDesktop: Unity
+    Date: Sat Jun 28 09:42:13 2014
+    InstallationDate: Installed on 2014-03-30 (89 days ago)
+    InstallationMedia: Ubuntu 14.04 LTS "Trusty Tahr" - Daily amd64 (20140329)
+    PackageArchitecture: all
+    SourcePackage: etckeeper
+    UpgradeStatus: No upgrade log present (probably fresh install)
+    mtime.conffile..etc.etckeeper.etckeeper.conf: 2014-03-30T16:33:03.109833
+
+> [[done]] --[[Joey]]

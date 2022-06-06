@@ -1,0 +1,11 @@
+Hi Joey,
+
+Here are some more tests that uses fakeroot:
+https://gitlab.com/HRio/etckeeper/commits/fakeroot
+
+Can you please have a look?
+
+Thanks,
+ Henrik
+
+> merged [[done]] --[[Joey]]

@@ -1,0 +1,7 @@
+If the only changes in /etc are metadata changes that the VCS doesn't natively track, then etckeeper refuses to make a new commit for them.  At least with git.
+
+This is because the metadata in `/etc/.etckeeper` is only updated from `etckeeper pre-commit`, which is only called by the VCS pre-commit hook; and since the VCS doesn't track the metadata changes, it doesn't think that a new commit needs to be made, and doesn't call the hook!
+
+I think the best solution might be to call `etckeeper pre-commit` from in `etckeeper commit`.
+
+> [[fixed|done]] --[[Joey]]

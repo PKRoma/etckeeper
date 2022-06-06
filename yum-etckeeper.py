@@ -26,7 +26,7 @@ plugin_type = (TYPE_CORE,)
 def pretrans_hook(conduit):
     conduit.info(2, 'etckeeper: pre transaction commit')
     servicecmd = conduit.confString('main', 'servicecmd', '/usr/bin/etckeeper')
-    command = '%s %s' % (servicecmd, " pre-install")
+    command = '%s %s > /dev/null' % (servicecmd, " pre-install")
     ret = os.system(command)
     if ret != 0:
         raise PluginYumExit('etckeeper returned %d' % (ret >> 8))

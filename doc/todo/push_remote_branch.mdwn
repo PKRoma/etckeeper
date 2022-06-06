@@ -9,4 +9,8 @@ I think that adding `PUSH_REMOTE` was a mistake. It would be better to
 remove it, and add to the readme an example of writing your own
 `/etc/etckeeper/commit.d/99push` script that does exactly the kind of
 pushing you want. The only reason I've not done so is it would break
-compatability for anyone using this feature. --[[Joey]]
+compatibility for anyone using this feature. --[[Joey]]
+
+> Well, there was no point in it hardcoding master. `git push origin` will
+> push whatever branches you've configured git to push. So, made that
+> change, which I think is sufficient. [[done]] --[[Joey]]

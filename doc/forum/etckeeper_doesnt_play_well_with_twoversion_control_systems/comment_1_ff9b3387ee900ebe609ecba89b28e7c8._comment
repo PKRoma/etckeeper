@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-11-23T16:33:13Z"
+ content="""
+I think this is an unusual configuration, and it would be very clunky to
+need to keep track of every file that might need to be ignored for every
+VCS.
+
+Editing the .gitignore seems like the right solution for you.
+"""]]

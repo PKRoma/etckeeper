@@ -1,0 +1,11 @@
+I've written some code to extend the VCS hook to provide more detailed log messages for post-install commits.
+
+Basically, it matches the list of altered files against package manager file list and lists packages with actual configuration changes (plus non-package files) in addition to the list of all changed packages that's listed now.
+
+I find it useful on large system updates, when the package list gets long and commit message consists mostly of irrelevant package names.
+
+I have to note that I don't use package managers other than apt/rpm or vcs other than git on regular basis, so it would be useful if someone with more experience on those takes a look at mercurial/bazaar/darcs and pacman/pkgng implementations of the functions.
+
+Patch for the post-install.d/50vcs-commit file is available at: <https://gist.github.com/emkael/364f701a5342978e6e79c2368b905565>
+
+> [[done]] --[[Joey]]

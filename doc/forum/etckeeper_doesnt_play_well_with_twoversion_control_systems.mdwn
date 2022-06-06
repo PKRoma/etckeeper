@@ -1,0 +1,10 @@
+I use etc keeper with git, and some etc files are simultaneous manually managed with RCS (mainly historic reasons)
+etckeeper wants to checkin the ,v RCS repository files.
+
+Shouldnt "RCS/*,v" or something be the default in .gitignore
+
+Or more generally, should it ignore repo files for *all* vc systems not just the one its using?
+
+Where would I make this change locally to fix this, so it applies to all directories and version control systems? Right now Ive just amended the git ignore file
+
+  

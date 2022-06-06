@@ -1,0 +1,38 @@
+I've recently noticed that update-ignore forces my /etc/.gitignore permissions to be 0600. I've written up [a patch to let it preserve any preexisting VCS ignore file's permissions and ownership](https://gitlab.com/eefi/etckeeper/-/commit/3b824ea5c8218022347a325a20811a84efa6feb7).
+
+The main practical impact of the current state before this patch is that, at least on Debian systems, the second commit into the /etc repo is sullied by an unexpected edit to /etc/.etckeeper updating the permissions for .gitignore from 0644 to 0600. This happens through the following course of events:
+
+1. During initial etckeeper package installation, the postinst runs `etckeeper init`, creating a 0644 .gitignore file, because update-ignore just follows the active umask when creating a brand new VCS ignore file.
+2. This initial `etckeeper init` creates a first commit that includes an .etckeeper that records the 0644 permissions for .gitignore.
+3. Still during this initial etckeeper package installation, the last step of postinst is to run `etckeeper update-ignore`. This causes the permissions on .gitignore to be changed to 0600.
+4. The administrator makes some changes in /etc.
+5. The administrator uses `etckeeper vcs status` (or `git -C /etc status`) to check what she's about to commit. Because .etckeeper usually isn't updated until the pre-commit is run, the pending change to the .gitignore permissions isn't shown.
+6. The administrator commits her changes. The pre-commit hook updates .etckeeper with .gitignore's new permissions, and that change gets silently lumped in with the other changes actually explicitly planned by the administrator.
+
+My patch takes the approach of preserving any special permissions and ownership an administrator might set. An alternative could be to make update-ignore force root:root 0600 always, by making the results from creating a new VCS ignore file match the results when updating an existing VCS ignore file. But either way, I'd propose that update-ignore be made consistent.
+
+The following are details from `git request-pull` for where to get the specific commit I'm requesting get pulled.
+
+```
+The following changes since commit 38d24e461f332ede0dd76d78e63948812ef1b5ab:
+
+   (2020-11-09 09:39:52 +0000)
+
+are available in the Git repository at:
+
+  https://gitlab.com/eefi/etckeeper.git eefi/preserve-perms-in-update-ignore
+
+for you to fetch changes up to 3b824ea5c8218022347a325a20811a84efa6feb7:
+
+  update-ignore: Preserve existing permissions (2020-11-22 16:48:21 -0500)
+
+----------------------------------------------------------------
+Austin Chu (1):
+      update-ignore: Preserve existing permissions
+
+ debian/changelog                | 2 ++
+ update-ignore.d/01update-ignore | 5 +++++
+ 2 files changed, 7 insertions(+)
+```
+
+> [[fixed|done]] --[[Joey]]

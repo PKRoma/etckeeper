@@ -1,0 +1,15 @@
+I've installed etckeeper & git on a new machine running arch.  I've got sudo and git setup for my regular user.  When I `sudo etckeeper commit "Initial commit"` git gives me the usual message about empty ident name for root@host.  Documentation suggests that sudo will grab the ident of sudo user but that doesn't seem to be working.  I'm running etckeeper 1.18.12-1.  What am I missing?
+
+---
+
+[[!comment  format=mdwn
+username="https://peterjmello.wordpress.com/"
+nickname="RogueScholar"
+date="2020-01-10T19:22:30-0800"
+content="""
+One possible solution to your issue would be to edit `/etc/etckeeper/etckeeper.conf` and change the VCS variable value to include the location of your gitconfig file. Assuming yours is in the default location of `~/.gitconfig` that would mean changing it from `VCS="git"` to `VCS="git -f /home/<yourusername>/.gitconfig"` (be sure to use the canonical path to the file rather than relying on the `~` alias for your home directory because in this instance ~ points to `/root`).
+
+-Peter
+"""
+]]
+>[[!fortune ]]

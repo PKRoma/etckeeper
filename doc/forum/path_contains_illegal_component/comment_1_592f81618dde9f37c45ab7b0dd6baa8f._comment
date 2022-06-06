@@ -1,0 +1,14 @@
+[[!comment format=mdwn
+ username="etckeep@4f7bb5e4e71942aea2d70a344bc1ffc3d17e33b8"
+ nickname="etckeep"
+ avatar="http://cdn.libravatar.org/avatar/bedda0cf35898e15636d0f594ef83335"
+ subject="Cannot version files in .hg directory"
+ date="2020-10-12T00:01:30Z"
+ content="""
+There is a setting in /etc/etckeepeer.conf like so:
+# Uncomment the following to avoid special file warning
+# (the option is enabled automatically for daily autocommits regardless).
+AVOID_SPECIAL_FILE_WARNING=1
+
+It is commented out by default because of the automatic enabling, but I have enabled it to see wheterh it makes a difference.
+"""]]

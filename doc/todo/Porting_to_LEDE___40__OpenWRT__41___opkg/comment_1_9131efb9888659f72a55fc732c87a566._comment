@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="http://roschacker.id.mail.ru/"
+ subject="What dependencies we need?"
+ date="2017-07-15T13:09:41Z"
+ content="""
+python is NOT installed by default
+nither perl
+
+but git is present
+"""]]

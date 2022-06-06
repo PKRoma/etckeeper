@@ -1,0 +1,9 @@
+I like that etckeeper can block my attempt at apt-get installing anything when there are pending changes in /etc
+
+
+Can this also be done with stuff installed from the Snap Store (https://snapcraft.io/store)?
+
+
+I've been looking for the git repository for this project to look for an issue tracker, but couldn't find anything 'official'.
+
+Cheers

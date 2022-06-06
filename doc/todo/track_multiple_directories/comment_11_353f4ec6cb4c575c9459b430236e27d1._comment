@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="doneg"
+ subject="comment 11"
+ date="2016-09-23T09:14:21Z"
+ content="""
+You already have -d support, now can you do, please, another step to track multiple dirs by adding cycle into `/etc/cron.daily/etckeeper` which would commit from multiple dirs. This could be variable in `/etc/etckeeper/etckeeper.conf`, for example `ADD_DIRS=\"/usr/local/etc /boot/grub\"`, and cron.daily script could just `for dir in $ADD_DIRS` and `commit -d $dir` them all. This requires just few lines to acquire such great functionality.
+
+For example, `/etc/grub2.cfg` is very important for the health of a system and it's never tracked by etckeeper by default because it's symlink to `/boot/grub2/grub.cfg`. We just have another server not survive reboot after simple `yum update` because grub.conf got wrong lvm parameters, and we unable to track when this change was happened first time.
+"""]]

@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2017-01-06T00:11:26Z"
+ content="""
+git has no trouble storing a symlink to /dev/null here. AFAIK, git doesn't
+care in the slightest where a symlink points and never has.
+
+And, I have a /etc/systemd/system/minetest-server.service link to /dev/null
+here which etckeeper committed in 2015.
+"""]]

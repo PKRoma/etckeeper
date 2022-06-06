@@ -1,0 +1,38 @@
+[[https://unix.stackexchange.com/questions/368850/ansible-role-why-do-i-have-to-set-user-email-in-etckeeper/368851]]
+
+etckeeper expects that users set git `user.email`.  But it does not document this, or suggest a best way to do it.
+
+In common usage, this expectation is masked.  I believe the conditions for it breaking are:
+
+1. user.email is not set in git, AND
+2. the system hostname cannot be resolved to an FQDN, AND
+3. /etc/mailname does not exist (it is created by the Debian exim packages?) AND
+4. etckeeper is not run from sudo AND
+5. etckeeper is not run from a tty
+
+In this situation, etckeeper requires users to set `user.email` in /root/.gitconfig, or to have set it in /etc/.git/config immediately after `etckeeper init`.
+
+This is not Ansible-specific: the last two conditions will also arise in the daily autocommit script.
+
+    ● etckeeper.service - Autocommit of changes in /etc directory
+       Loaded: loaded (/lib/systemd/system/etckeeper.service; static; vendor preset: enabled)
+       Active: failed (Result: exit-code) since Sat 2017-06-03 00:22:20 BST; 5s ago
+         Docs: man:etckeeper(8)
+      Process: 2989 ExecStart=/etc/etckeeper/daily (code=exited, status=128)
+     Main PID: 2989 (code=exited, status=128)
+
+    Jun 03 00:22:20 unstable daily[2989]: Run
+    Jun 03 00:22:20 unstable daily[2989]:   git config --global user.email "you@example.com"
+    Jun 03 00:22:20 unstable daily[2989]:   git config --global user.name "Your Name"
+    Jun 03 00:22:20 unstable daily[2989]: to set your account's default identity.
+    Jun 03 00:22:20 unstable daily[2989]: Omit --global to set the identity only in this repository.
+    Jun 03 00:22:20 unstable daily[2989]: fatal: unable to auto-detect email address (got 'root@unstable.(none)')
+    Jun 03 00:22:20 unstable systemd[1]: etckeeper.service: Main process exited, code=exited, status=128/n/a
+    Jun 03 00:22:20 unstable systemd[1]: Failed to start Autocommit of changes in /etc directory.
+    Jun 03 00:22:20 unstable systemd[1]: etckeeper.service: Unit entered failed state.
+    Jun 03 00:22:20 unstable systemd[1]: etckeeper.service: Failed with result 'exit-code'.
+
+
+IMO, considering how to document this behaviour shows it to be user-unfriendly.  Therefore, it would be simplest if etckeeper could fall back to using `$(id -un)`, once `$(tty)` fails.
+
+> Set `USER=$(whoami)`, for git only. [[done]] --[[Joey]]

@@ -12,7 +12,7 @@ It's quite modular and configurable, while also being simple to use if you
 understand the basics of working with version control.
 
 
-## security warnings
+## Security warnings
 
 First, a big warning: By checking /etc into version control, you are
 creating a copy of files like /etc/shadow that must remain secret. Anytime
@@ -35,7 +35,7 @@ Also note that `etckeeper init` runs code stored in the repository.
 So don't use it on repositories from untrusted sources.
 
 
-## what etckeeper does
+## What etckeeper does
 
 etckeeper has special support to handle changes to /etc caused by
 installing and upgrading packages. Before apt installs packages,
@@ -79,7 +79,7 @@ Darcs doesn't support symlinks, so they are also stored in
 `/etc/.etckeeper`.
 
 
-## tutorial
+## Tutorial
 
 A quick walkthrough of using etckeeper.
 
@@ -163,7 +163,7 @@ transport like ssh, and only to a server you trust.)
 	git remote add backup ssh://server/etc-clone
 	git push backup --all
 
-If you have several machine's using etckeeper, you can start with a
+If you have several machines using etckeeper, you can start with a
 etckeeper repository on one machine, then add another machine's etckeeper
 repository as a git remote. Then you can diff against it, examine its
 history, merge with it, and so on. It would probably not, however, be wise
@@ -184,17 +184,17 @@ run "etckeeper init" to update file permissions.)
 	-lp:x:7:cupsys
 	+lp:x:7:
 
-Incidentially, this also means I have a backup of dodo's /etc on darkstar.
+Incidentally, this also means I have a backup of dodo's /etc on darkstar.
 So if darkstar is compromised, that data could be used to attack dodo
 too. On the other hand, if dodo's disk dies, I can restore it from this
-handy hackup.
+handy backup.
 
 Of course, it's also possible to pull changes from a server onto client
 machines, to deploy changes to /etc. Once /etc is under version control, the
 sky's the limit..
 
 
-## configuration
+## Configuration
 
 The main configuration file is `/etc/etckeeper/etckeeper.conf`
 
@@ -222,7 +222,7 @@ letting it git add new files:
 etckeeper will notice if it's being run by way of sudo, and makes a commit
 with the author set to the user who sudoed to root. This is useful when
 a system has multiple admins; as long as they use sudo while doing their
-administration, and run `etckeeper commit` to commit their changes,
+administration, and run `sudo etckeeper commit` to commit their changes,
 `git blame` can show who was responsible for each change.
 
 ## changing VCS
@@ -257,7 +257,7 @@ edit `etckeeper.conf` to change the VCS setting, and finally
 `etckeeper init`. This procedure is clearly only for the brave.
 
 
-## inspiration
+## Inspiration
 
 Two blog posts provided inspiration for techniques used by etckeeper:
 
@@ -272,16 +272,16 @@ setup procedure and hooks for setting up an /etc repository, and then gets
 out of your way; you manage the repository using regular VCS commands.
 
 
-## license
+## License
 
 etckeeper is licensed under version 2 or greater of the GNU GPL.
 
 
-## website
+## Website
 
 <https://etckeeper.branchable.com/>
 
 
-## author
+## Author
 
 Joey Hess <id@joeyh.name>

@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="sourcejedi"
+ avatar="http://cdn.libravatar.org/avatar/599d943d715a521e4c23ab2a46ac70dc"
+ subject="Have a bonus commit: 3d431ea67922 &quot;Do not use dnfpluginscore.logger&quot;"
+ date="2019-04-23T19:17:50Z"
+ content="""
+dnfpluginscore is not core support for dnf plugins, it is just a
+collection of \"core plugins\" for dnf.  There is equally
+dnfpluginsextras and dnfpluginsextras.logger.
+
+A comment in dnf.logger comment says the logger name 'dnf.plugin' is \"api\".
+So we can safely rely on that name.
+
+Technically you can install etckeeper without the dnfpluginscore package
+(at least I managed to run into this for python2, on a Fedora 29 system
+which uses python3 for dnf by default).
+"""]]

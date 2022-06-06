@@ -1,0 +1,8 @@
+Hi
+
+* I made some change to have a more powerful ignore_filter https://github.com/jeremiejig/etckeeper/commit/faed9ba87a71a2d09cf078c0154bd3a6bd36786a
+The filtering process concern only **git**.
+
+* And I filter the empty directories to avoid creating ignored empty directories https://github.com/jeremiejig/etckeeper/commit/4f257707ed85097a93289b4a33f18ea21dcf3a6e
+
+Tell me what you think.

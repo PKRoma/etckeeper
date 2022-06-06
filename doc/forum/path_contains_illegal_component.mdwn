@@ -1,0 +1,18 @@
+After upgrading one of my servers from Ubuntu 16.04 to 18.04, I started to receive error messages from the etckeeper cron.daily job.
+
+/etc/cron.daily/etckeeper:
+abort: path contains illegal component: .hg/undo.dirstate
+abort: path contains illegal component: .hg/undo.backup.dirstate
+
+Note that I use mercurial for etckeeper. (I use hg in preference to git wherever I have the option.)
+A search for the error message showed some very old error associated with hg.
+
+I attempted to install a more recent version of hg from a ppa repository, but I don't think that was successful. (I can't be more definite than that.) At any rate, the apt version of hg is 4.5.3-1ubuntu2.1
+
+I eventually upgraded hg using pip install, and I now have 5.5.2 and that seems to have fixed the problem.
+
+I spoke too soon.
+
+For testing purposes, I moved cron.daily/etckeeper to cron.hourly.
+
+The error does not occur every hour, so there is some dependency on the path taken through the various etckeeper scripts.

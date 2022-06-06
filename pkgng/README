@@ -1,0 +1,8 @@
+To use on FreeBSD, install etckeeper manually and install the plugin
+with:
+ $ cd pkgng
+ $ make
+ $ make install
+
+and add this line to /usr/local/etc/pkg.conf:
+ PLUGINS [ etckeeper ]

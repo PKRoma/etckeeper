@@ -1,0 +1,26 @@
+[[!comment format=mdwn
+ username="https://launchpad.net/~codex24"
+ nickname="codex24"
+ subject="Workaround"
+ date="2016-02-14T23:12:10Z"
+ content="""
+With etckeeper installed in Ubuntu using git as its VCS, using the Ubuntu Software Center fails with errors 
+
+    installArchives() failed: fatal: $HOME not set
+
+Correct this by adding the following file, /etc/etckeeper/pre-install.d/20setenv:
+
+    #!/bin/sh
+    # /etc/etckeeper/pre-install.d/20setenv: set HOME dir due to 
+    # unpassed environment in priviledge escallation of Ubuntu Software Center.
+    # see https://bugs.launchpad.net/ubuntu/+source/etckeeper/+bug/1335391
+    if \[[ -z \"$HOME\" ]]; then
+        export HOME=$(getent passwd root | cut -d: -f6)
+    fi
+
+Also, ensure that the root account's git environment is properly initialized:
+
+    root@janus:/etc# git config -l
+    user.name=Root Janus
+    user.email=codex24@gmail.com
+"""]]

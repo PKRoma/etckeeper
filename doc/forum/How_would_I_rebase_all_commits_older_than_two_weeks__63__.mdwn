@@ -1,0 +1,54 @@
+Hi;
+
+I'm implementing etckeeper for all of our servers, but I'm concerned about the "unlimited growth potential" of the /etc/.git repository.  (Note: I'm not a git expert by any means.)
+
+Google hasn't explicitly said so, but there are hints that rebasing (followed by garbage collection) will let me squash commits and keep the repository from filling up the root partition.
+
+The command `git log --before 'two weeks ago' -1` shows the last commit made just before that point in time, so that may be useful in the final solution. 
+
+Also, [[this post|Prevent_hook_running_during_rebase]] briefly describes the correct process for rebasing: `clone /etc repo, edit, and force pull the changes`
+
+So, in a nutshell: 
+
+* How can I squash all commits older than (say) two weeks into a single commit at the root of the /etc repo, leaving younger commits alone?
+  - This should nuke all the copies of things that were deleted from /etc more than two weeks ago, yes?
+
+* If I wanted to emulate monthly, weekly and daily backups (with different retention periods) in the etckeeper repository, how could it be done?
+
+Thanks!
+
+---
+# 2021-11-04
+Ok, I'm back, I think I've found a solution:
+
+```
+git checkout master   # To make sure you're where you think you are
+root_commit=$(git rev-list --max-parents=0 HEAD)
+git log --before "2 weeks ago" -1    # See the commit id and check the date is suitable, don't continue until you're happy
+
+git rebase -i $root_commit   # Starts an editor with a list of every commit since the dawn of time, oldest at the top, latest at the bottom
+```
+In the editor, change 'pick' to 'squash' for every commit **except**:
+
+   * the first (it'll generate an error if you try, as there's nothing to squash it into)
+   * the one you found with 'git log', above
+   * and all the commits after that
+
+After that, run `git gc`; it should clear out all the now-unused commits that were squashed.
+
+To emulate weekly/monthly backups, use that `git log --before "X weeks/months ago" -1` command to find the commits, and then leave them as 'pick' (not 'squash') during the rebase!  :-)
+
+Cautions:
+
+* This worked for me, but may not work for you.  (YMMV)
+* Copy /etc to another directory for experimentation.
+* Back up /etc before you do it for real.
+* If you break it, you get to keep both pieces!
+
+Good luck!
+
+References:
+
+* https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+* https://git-scm.com/docs/git-rebase
+* https://www.cloudbees.com/blog/git-squash-how-to-condense-your-commit-history

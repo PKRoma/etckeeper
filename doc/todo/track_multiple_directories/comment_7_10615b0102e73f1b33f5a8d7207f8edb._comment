@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="apaz"
+ subject="Very much needed"
+ date="2015-04-29T08:44:04Z"
+ content="""
+This is very much needed!
+Example of some folders in debian/ubuntu that people want to keep track of:
+/var/spool/cron/crontabs - user crontabs, yes you can use /etc/cron.d but not everyone does.
+/lib/ufw/ - If you use ufw, the rules will be saved here
+/usr/local/bin - for your own shellscripts and stuff
+"""]]

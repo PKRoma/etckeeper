@@ -7,15 +7,28 @@ if [ "$1" = fmt ]; then
 		echo ""
 	fi
 else
+	# Keep the sort order the same at all times.
+	LC_COLLATE=C
+	export LC_COLLATE
+	unset LC_ALL
+
 	# Output to stdout a *sorted* list of all currently installed 
 	# (or removed but still with config-files) packages, in the
 	# format "package version\n" (or something similar).
 	if [ "$LOWLEVEL_PACKAGE_MANAGER" = dpkg ]; then
 		dpkg-query -W -f '${Status}\t${Package} ${Version} ${Architecture}\n' | \
-			egrep '(ok installed|ok config-files)' | cut -f2,3
+			grep -E '(ok installed|ok config-files)' | cut -f2,3
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
 		rpm -qa --qf "%|epoch?{%{epoch}}:{0}|:%{name}-%{version}-%{release}.%{arch}\n" | sort
 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pacman ]; then
 		pacman -Q
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pacmatic ]; then
+		pacmatic -Q
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pkgng ]; then
+		pkg info -E "*"
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = apk ]; then
+		apk info -v | sort
+	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = xbps ]; then
+		xbps-query -l | awk '{print $2}' | sed -r 's/-([^-]+)$/ \1/g;'
 	fi
 fi

@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-04-24T16:30:32Z"
+ content="""
+`etckeeper commit` adds any new files, and records any changes to file
+permissions or owners.
+"""]]

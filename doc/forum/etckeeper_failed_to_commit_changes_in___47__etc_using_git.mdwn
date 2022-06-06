@@ -1,0 +1,29 @@
+Hello,
+
+I am having issues with etckeeper, failing to commit changes:
+	Changes not staged for commit:
+	(use "git add <file>..." to update what will be committed)
+	(use "git restore <file>..." to discard changes in working directory)
+	(commit or discard the untracked or modified content in submodules)
+			modified:   letsencrypt/letsencrypt-autoupdater (modified content)
+	
+	no changes added to commit (use "git add" and/or "git commit -a")
+	warning: etckeeper failed to commit changes in /etc using git
+	(Reading database ... 206470 files and directories currently installed.)
+	Removing knxd-build-deps (0.14.42-1) ...
+	On branch master
+	Changes not staged for commit:
+	(use "git add <file>..." to update what will be committed)
+	(use "git restore <file>..." to discard changes in working directory)
+	(commit or discard the untracked or modified content in submodules)
+			modified:   letsencrypt/letsencrypt-autoupdater (modified content)
+	
+	no changes added to commit (use "git add" and/or "git commit -a")
+
+
+I did try a git add letsencrypt/letsencrypt-autoupdater and git commit -a with no effect.
+
+Can you tell me, how to fix this?
+
+Regards,
+Hendrik

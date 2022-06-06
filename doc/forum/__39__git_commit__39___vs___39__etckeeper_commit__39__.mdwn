@@ -1,0 +1,3 @@
+In the readme documentation for etckeeper, after the initial `etckeeper init` all commands are run using git (eg `git commit` or `git status`). Before finding the readme, I read several tutorials, DigitalOcean has one, that uses etckeeper instead (eg `etckeeper commit` or `etckeeper vcs status`). Do these pretty much do the same thing or should one be used over the other?
+
+Thanks!

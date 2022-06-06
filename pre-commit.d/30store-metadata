@@ -1,18 +1,10 @@
 #!/bin/sh
 set -e
 
-# Filters out UNKNOWN users and groups, prints a warning on stderr.
-filter_unknown() {
-	CMD=$1
-	while read line; do
-		# if the first n chars of $line equal "$CMD UNKNOWN "...
-		if [ "$(printf %.$((9+${#CMD}))s "$line")" = "$CMD UNKNOWN " ]; then
-			echo Bad "$2" for "$line" >&2
-		else
-			echo "$line"
-		fi
-	done
-}
+# Keep the sort order the same at all times.
+LC_COLLATE=C
+export LC_COLLATE
+unset LC_ALL
 
 filter_ignore() {
 	case "$VCS" in
@@ -24,12 +16,16 @@ filter_ignore() {
 		listfile="$( mktemp -t etckeeper-$VCS.XXXXXXXXXX )"
 		case "$VCS" in
 			darcs)
-				grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$listfile" || true
-				grep -Evf "$listfile"
+				LC_CTYPE=C grep -v '^[[:space:]]*\(#\|$\)' "$ignorefile" > "$listfile" || true
+				LC_CTYPE=C grep -Evf "$listfile"
 				;;
 			git)
 				(git ls-files -oi --exclude-standard; git ls-files -oi --exclude-standard --directory) | sort | uniq > "$listfile" || true
-				sed 's/^\.\///' | grep -xFvf "$listfile"
+				if [ -s "$listfile" ]; then
+					sed 's/^\.\///' | LC_CTYPE=C grep -xFvf "$listfile"
+				else
+					cat -
+				fi
 				;;
 		esac
 		rm -f "$listfile"
@@ -61,10 +57,6 @@ generate_metadata() {
 	# printed!)
 	NOVCS='. -path ./.git -prune -o -path ./.bzr -prune -o -path ./.hg -prune -o -path ./_darcs -prune -o'
 
-	# Keep the sort order the same at all times.
-	LC_COLLATE=C
-	export LC_COLLATE
-
 	if [ "$VCS" = git ] || [ "$VCS" = hg ]; then
 		# These version control systems do not track directories,
 		# so empty directories must be stored specially.
@@ -83,43 +75,69 @@ generate_metadata() {
  
 	# Store things that don't have the default user or group.
 	# Store all file modes, in case the user has an unusual umask.
-	find $NOVCS \( -type f -or -type d \) -print | filter_ignore | sort | perl -ne '
-		BEGIN { $q=chr(39) }
-		sub uidname {
-			my $want=shift;
-			if (exists $uidcache{$want}) {
-				return $uidcache{$want};
-			}
-			my $name=scalar getpwuid($want);
-			return $uidcache{$want}=defined $name ? $name : $want;
-		}
-		sub gidname {
-			my $want=shift;
-			if (exists $gidcache{$want}) {
-				return $gidcache{$want};
-			}
-			my $name=scalar getgrgid($want);
-			return $gidcache{$want}=defined $name ? $name : $want;
-		}
-		chomp;
-		my @stat=stat($_);
-		my $mode = $stat[2];
-		my $uid = $stat[4];
-		my $gid = $stat[5];
-		s/$q/$q"$q"$q/g; # escape single quotes
-		s/^/$q/;
-		s/$/$q/;
-		if ($uid != $>) {
-			printf "maybe chown $q%s$q %s\n", uidname($uid), $_;
-		}
-		if ($gid != $)) {
-			printf "maybe chgrp $q%s$q %s\n", gidname($gid), $_;
-		}
-		printf "maybe chmod %04o %s\n", $mode & 07777, $_;
-	'
+	find $NOVCS \( -type f -or -type d \) -print | filter_ignore | sort | maybe_chmod_chown
 
 	# We don't handle xattrs.
 	# Maybe check for getfattr/setfattr and use them if they're available?
+}
+
+maybe_chmod_chown() {
+	if command -v perl >/dev/null; then
+		perl -ne '
+			BEGIN { $q=chr(39) }
+			sub uidname {
+				my $want=shift;
+				if (exists $uidcache{$want}) {
+					return $uidcache{$want};
+				}
+				my $name=scalar getpwuid($want);
+				return $uidcache{$want}=defined $name ? $name : $want;
+			}
+			sub gidname {
+				my $want=shift;
+				if (exists $gidcache{$want}) {
+					return $gidcache{$want};
+				}
+				my $name=scalar getgrgid($want);
+				return $gidcache{$want}=defined $name ? $name : $want;
+			}
+			chomp;
+			my @stat=stat($_);
+			my $mode = $stat[2];
+			my $uid = $stat[4];
+			my $gid = $stat[5];
+			s/$q/$q"$q"$q/g; # escape single quotes
+			s/^/$q/;
+			s/$/$q/;
+			if ($uid != $>) {
+				printf "maybe chown $q%s$q %s\n", uidname($uid), $_;
+			}
+			if ($gid != $)) {
+				printf "maybe chgrp $q%s$q %s\n", gidname($gid), $_;
+			}
+			printf "maybe chmod %04o %s\n", $mode & 07777, $_;
+		'
+		return $?
+	else
+		# fallback if perl isn't present
+		euid=$(id -u)
+		egid=$(id -g)
+		q="'"
+		while read x; do
+			stat=$(stat -c "%f:%u:%g:%a:%U:%G" "$x")
+			IFS=":" read mode uid gid perm uname gname <<EOF
+$stat
+EOF
+			x=$q$(echo $x | sed "s/$q/$q\"$q\"$q/")$q
+			if [ $uid -ne $euid ]; then
+				echo maybe chown "'$uname'" $x
+			fi
+			if [ $gid -ne $egid ]; then
+				echo maybe chgrp "'$gname'" $x
+			fi
+			echo maybe chmod 0$perm $x
+		done
+	fi
 }
 
 if [ "$VCS" = git ] || [ "$VCS" = hg ] || [ "$VCS" = bzr ] || [ "$VCS" = darcs ]; then

@@ -1,0 +1,12 @@
+Two users report issues ([here](https://bugzilla.redhat.com/show_bug.cgi?id=1979456), [here](https://bugzilla.redhat.com/show_bug.cgi?id=2036327)) with `pre-commit.d/30store-metadata` resp. `commit.d/20store-metadata`:
+
+In a German locale, `etckeeper commit 'daily autocommit'` creates messages like this:
+
+```
+grep: (Standardeingabe): Übereinstimmungen in Binärdatei
+```
+
+coming from the `grep` in line 25. It can be fixed by either setting
+`LC_CTYPE=C` (maybe generally, in that file), or by adding `-a` to the `grep` call.
+
+> [[done]] --[[Joey]]

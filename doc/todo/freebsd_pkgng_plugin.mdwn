@@ -1,0 +1,8 @@
+Get the same integration with FreeBSD pkg as with other package managers.
+
+Basic working plugin available at: <https://github.com/radhus/etckeeper/commit/f849bcc558c2c83b8738e31d2aee56d979c39555>
+
+> I've merged this. Of course it would be good to get the main Makefile
+> able to install it. Please open new todos if you have updates and thanks!
+> [[done]]
+> --[[Joey]]

@@ -1,0 +1,24 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2016-10-18T14:57:14Z"
+ content="""
+Good idea!
+
+Reviewing the patch, I noticed that dpkg -S is run once per changed file.
+It should be faster to pass all the changed files to it, and parse the
+output.
+
+(Other package managers may also be able to be optimised this way,
+but I only care about dpkg, and happen to know dpkg -S can be pretty
+slow.. rpm -qf may be fast enough that running repeatedly is not a
+problem.)
+
+I think that the "Non-package (maintainer script/removed package)
+configuration files changed" list can be omitted. At least on debian there
+are unfortunately going to be a lot of such files, and it seems just added
+noise in the commit log, and added complication to build the list.
+
+Please use tabs and not spaces for indentation, in keeping with the rest of
+etckeeper's code.
+"""]]

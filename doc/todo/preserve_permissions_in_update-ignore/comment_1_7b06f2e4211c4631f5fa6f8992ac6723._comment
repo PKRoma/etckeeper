@@ -1,0 +1,18 @@
+[[!comment format=mdwn
+ username="joey"
+ subject="""comment 1"""
+ date="2020-11-23T16:14:15Z"
+ content="""
+Crucially, etckeeper does not write anything sensitive to .gitignore,
+so there's no information exposure risk, except for anything the admin may
+choose to put in it. So it's fine to leave it 0644 by default on new
+installs. Conversely, etckeeper can't easily tell if the admin might have
+put something sensitive into .gitignore, so it should not try to force the
+permissions back to 0644 on existing installs that have inherited the temp
+file permissions.
+
+Ingenious way to preserve the permissions there. I checked and busybox cp
+supports -fp, so it should bee portable enough to not be a problem.
+
+I'm applying this patch.
+"""]]

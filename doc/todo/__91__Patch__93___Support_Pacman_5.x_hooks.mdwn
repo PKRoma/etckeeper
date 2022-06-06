@@ -1,0 +1,10 @@
+The 5.0.0 release of Arch Linux' *Pacman* package manager
+[finally supports hooks](https://projects.archlinux.org/pacman.git/tree/NEWS?id=fea9abc8db3b8161ab32774a0ddd7c405cfbe44f),
+making it possible to properly integrate etckeeper with it.
+
+I have added the necessary hook files to etckeeper and also modified the `Makefile` to install them if the user chooses
+`pacman` as the `LOWLEVEL_PACKAGE_MANAGER`.
+
+You can find my patch [here](https://github.com/joeyh/etckeeper/compare/master...Tblue:master.patch). Please consider applying it. :-)
+
+> merged, thanks. [[done]] --[[Joey]]

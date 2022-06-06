@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://schmonz.livejournal.com/"
+ subject="never added this patch"
+ date="2017-06-28T17:43:39Z"
+ content="""
+pkgsrc had been on a really old version (1.3!) until mid-May, when Nathan sent me these patches. I brought us up to 1.18.5.1, saw that this patch was unneeded, and applied just [[the other one|Truly-quiet when there's nothing to commit]]. Hoping for a 1.18.7 distfile to appear (maybe [here](https://packages.debian.org/stretch/etckeeper)?) so I can keep pkgsrc at the latest.
+"""]]

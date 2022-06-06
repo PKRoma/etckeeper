@@ -1,0 +1,1 @@
+Would it be possible to extend etckeeper to track SELinux contexts the same way it does user/group ownership and permissions? These are stored in the security.selinux xattr, so seems like some 'setfattr' calls to restore them could easily be part of the /etc/.etckeeper file. Also, etckeeper could set the SELinux context for /etc/.git, the same way it does chmod 700.
